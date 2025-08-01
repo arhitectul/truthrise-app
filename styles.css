@@ -1,0 +1,206 @@
+/* TruthRise Styles - Color scheme and custom components */
+
+:root {
+  /* Color Variables */
+  --dark-bg: #1a1a1a;
+  --light-text: #ffffff;
+  --brand-cyan: #1BBFDB;
+  --accent-text: #1a1a1a;
+  --highlight-yellow: #ffeb3b;
+  --gray-dark: #2a2a2a;
+  --gray-medium: #333333;
+  --gray-light: #666666;
+  --error-red: #ff4d4d;
+  --success-green: #4caf50;
+}
+
+/* Tailwind CSS Custom Classes */
+.bg-dark-bg {
+  background-color: var(--dark-bg);
+}
+
+.text-light-text {
+  color: var(--light-text);
+}
+
+.text-brand-cyan {
+  color: var(--brand-cyan);
+}
+
+.text-accent-text {
+  color: var(--accent-text);
+}
+
+.text-highlight-yellow {
+  color: var(--highlight-yellow);
+}
+
+.border-brand-cyan {
+  border-color: var(--brand-cyan);
+}
+
+.bg-brand-cyan {
+  background-color: var(--brand-cyan);
+}
+
+/* Custom Button Styles */
+.cta-primary {
+  background-color: var(--brand-cyan);
+  color: var(--light-text);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid var(--brand-cyan);
+}
+
+.cta-primary:hover {
+  background-color: #0a9bbd;
+  border-color: #0a9bbd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 191, 219, 0.3);
+}
+
+.cta-outline {
+  background-color: transparent;
+  color: var(--brand-cyan);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid var(--brand-cyan);
+}
+
+.cta-outline:hover {
+  background-color: var(--brand-cyan);
+  color: var(--light-text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 191, 219, 0.3);
+}
+
+/* Pulse Animation */
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(27, 191, 219, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(27, 191, 219, 0.8), 0 0 30px rgba(27, 191, 219, 0.6);
+  }
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+  background-color: var(--gray-dark);
+  border: 1px solid var(--gray-medium);
+  color: var(--light-text);
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brand-cyan);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(27, 191, 219, 0.2);
+}
+
+/* Navigation Active State */
+.nav-active {
+  background-color: var(--brand-cyan);
+  color: var(--light-text);
+  border-radius: 5px;
+  padding: 8px;
+}
+
+/* Card Styles */
+.card {
+  background-color: #374151;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Stats Card */
+.stats-card {
+  background-color: #374151;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stats-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--brand-cyan);
+  line-height: 1;
+}
+
+.stats-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cta-primary,
+  .cta-outline {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Utility Classes */
+.text-error {
+  color: var(--error-red);
+}
+
+.text-success {
+  color: var(--success-green);
+}
+
+.bg-error {
+  background-color: var(--error-red);
+}
+
+.bg-success {
+  background-color: var(--success-green);
+}
+
+/* Loading Animation */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(27, 191, 219, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--brand-cyan);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

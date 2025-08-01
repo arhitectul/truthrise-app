@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location - TRUTHRISE Onboarding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="assets/css/onboarding.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: #181c20;
+      min-height: 100vh;
+    }
+    .card-shadow {
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+    }
+    .cta-primary {
+      background: #1bbfdb;
+      color: #fff;
+      font-weight: 800;
+      border-radius: 8px;
+      padding: 16px 40px;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 24px 0 rgba(27,191,219,0.15);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .cta-primary:hover {
+      background: #139ab8;
+      box-shadow: 0 6px 32px 0 rgba(27,191,219,0.25);
+    }
+    label {
+      color: #1bbfdb;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    input, select {
+      background: #23272b;
+      color: #fff;
+      border: 1.5px solid #1bbfdb;
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #139ab8;
+    }
+    .fade-in {
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px);}
+      to { opacity: 1; transform: none;}
+    }
+  </style>
+</head>
+<body class="text-light-text font-sans">
+  <main class="container mx-auto px-4 py-16 max-w-md">
+    <div class="rounded-xl card-shadow p-8 mb-8 fade-in" style="background:#23272b;">
+      <h1 class="text-3xl font-extrabold mb-4 text-center tracking-tight text-brand-cyan">Where are you joining from?</h1>
+      <p class="text-base text-gray-300 mb-6 text-center">
+        Please enter your country and city. This helps us build a global, transparent community.
+      </p>
+      <form id="locationForm" autocomplete="off">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="Country" required autocomplete="country">
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="City" required autocomplete="address-level2">
+
+        <button type="submit" class="cta-primary w-full mt-2">Continue</button>
+      </form>
+    </div>
+  </main>
+  <footer class="bg-dark-bg py-6 border-t border-gray-800 text-center">
+    <p class="text-sm text-gray-400">&copy; 2025 TruthRise. All rights reserved.</p>
+  </footer>
+  <script>
+    document.getElementById('locationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Optionally, store location in localStorage/sessionStorage here
+      window.location.href = 'register.html';
+    });
+  </script>
+</body>
+</html>

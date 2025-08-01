@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUTHRISE Constitution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="assets/css/onboarding.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: #181c20; /* Simple dark background */
+      min-height: 100vh;
+    }
+    .article-container {
+      transition: box-shadow 0.2s, background 0.2s, opacity 0.2s;
+      background: #23272b; /* Simple container background */
+    }
+    .article-container.active {
+      background: #23272b;
+      box-shadow: 0 4px 32px 0 rgba(27,191,219,0.15);
+      border: 1.5px solid #1bbfdb;
+      opacity: 1 !important;
+    }
+    .article-container .article-content {
+      animation: fadeIn 0.3s;
+    }
+    .ack-btn {
+      background: #1bbfdb;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 12px 32px;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(27,191,219,0.10);
+    }
+    .ack-btn:disabled {
+      background: #3b3b3b;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .ack-btn:hover:not(:disabled) {
+      background: #139ab8;
+    }
+    .cta-primary {
+      background: #1bbfdb;
+      color: #fff;
+      font-weight: 800;
+      border-radius: 8px;
+      padding: 16px 40px;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 24px 0 rgba(27,191,219,0.15);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .cta-primary:hover {
+      background: #139ab8;
+      box-shadow: 0 6px 32px 0 rgba(27,191,219,0.25);
+    }
+    .fade-in {
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px);}
+      to { opacity: 1; transform: none;}
+    }
+    .article-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #1bbfdb;
+    }
+    .article-intro {
+      font-size: 1.1rem;
+      color: #e0f7fa;
+      font-weight: 500;
+    }
+    .step-indicator {
+      font-size: 1rem;
+      color: #1bbfdb;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .card-shadow {
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+    }
+  </style>
+</head>
+<body class="text-light-text font-sans">
+  <header>
+    <div id="header-placeholder"></div>
+  </header>
+
+  <main class="container mx-auto px-4 py-16 max-w-2xl">
+    <h1 class="text-4xl font-extrabold mb-8 text-center tracking-tight text-brand-cyan fade-in">TRUTHRISE Constitution</h1>
+    <div class="rounded-xl card-shadow p-6 mb-8 fade-in" style="background:#23272b;">
+      <p class="text-lg mb-2 font-semibold text-brand-cyan">Welcome to TRUTHRISE!</p>
+      <p class="text-base text-gray-300">
+        Please read and acknowledge each article of our Constitution. You must confirm each article before proceeding.
+      </p>
+    </div>
+
+    <!-- Articles Accordion -->
+    <div id="constitution-articles">
+      <!-- Article 1 -->
+      <div class="article-container rounded-xl card-shadow p-6 mb-6 fade-in active" data-article="1">
+        <div class="flex items-center justify-between cursor-pointer" onclick="toggleArticle(1)">
+          <span class="step-indicator">Article 1 of 3</span>
+          <span id="arrow-1" class="transition-transform text-brand-cyan text-2xl">&#9660;</span>
+        </div>
+        <div class="article-title mb-2">Transparency</div>
+        <div id="content-1" class="article-content mt-2">
+          <div class="article-intro mb-2">We commit to full transparency in all operations, communications, and decision-making processes.</div>
+          <ul class="list-disc list-inside mb-4 text-gray-200">
+            <li>1.1 All actions are documented and accessible to the community.</li>
+            <li>1.2 Financial flows are published and auditable.</li>
+            <li>1.3 Decisions are made in public forums whenever possible.</li>
+          </ul>
+          <button class="ack-btn" onclick="acknowledgeArticle(event, 1)">Acknowledge Article 1</button>
+        </div>
+      </div>
+      <!-- Article 2 -->
+      <div class="article-container rounded-xl card-shadow p-6 mb-6 fade-in disabled" data-article="2">
+        <div class="flex items-center justify-between cursor-pointer" onclick="toggleArticle(2)">
+          <span class="step-indicator">Article 2 of 3</span>
+          <span id="arrow-2" class="transition-transform text-brand-cyan text-2xl">&#9660;</span>
+        </div>
+        <div class="article-title mb-2">Respect</div>
+        <div id="content-2" class="article-content mt-2 hidden">
+          <div class="article-intro mb-2">We foster a respectful and inclusive environment for all members.</div>
+          <ul class="list-disc list-inside mb-4 text-gray-200">
+            <li>2.1 Discrimination or harassment is not tolerated.</li>
+            <li>2.2 Constructive feedback is encouraged.</li>
+            <li>2.3 Diversity of thought is valued.</li>
+          </ul>
+          <button class="ack-btn" onclick="acknowledgeArticle(event, 2)">Acknowledge Article 2</button>
+        </div>
+      </div>
+      <!-- Article 3 -->
+      <div class="article-container rounded-xl card-shadow p-6 mb-6 fade-in disabled" data-article="3">
+        <div class="flex items-center justify-between cursor-pointer" onclick="toggleArticle(3)">
+          <span class="step-indicator">Article 3 of 3</span>
+          <span id="arrow-3" class="transition-transform text-brand-cyan text-2xl">&#9660;</span>
+        </div>
+        <div class="article-title mb-2">Integrity</div>
+        <div id="content-3" class="article-content mt-2 hidden">
+          <div class="article-intro mb-2">We act with honesty and uphold the highest ethical standards.</div>
+          <ul class="list-disc list-inside mb-4 text-gray-200">
+            <li>3.1 Truthfulness is expected in all interactions.</li>
+            <li>3.2 Conflicts of interest must be disclosed.</li>
+            <li>3.3 Misrepresentation is grounds for removal.</li>
+          </ul>
+          <button class="ack-btn" onclick="acknowledgeArticle(event, 3)">Acknowledge Article 3</button>
+        </div>
+      </div>
+      <!-- Add more articles as needed, following the same structure -->
+      <!-- Final Commitment Button -->
+      <div id="final-commitment" class="hidden text-center mt-10 fade-in">
+        <button id="commit-btn" class="cta-primary">I Read and Commit to TRUTHRISE.io Constitution</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark-bg py-6 border-t border-gray-800 text-center">
+    <p class="text-sm text-gray-400">&copy; 2025 TruthRise. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Accordion logic
+    function toggleArticle(num) {
+      const container = document.querySelector('.article-container[data-article="' + num + '"]');
+      if (container.classList.contains('disabled')) return;
+      const content = document.getElementById('content-' + num);
+      const arrow = document.getElementById('arrow-' + num);
+      if (content.classList.contains('hidden')) {
+        document.querySelectorAll('.article-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.transition-transform').forEach(el => el.style.transform = '');
+        content.classList.remove('hidden');
+        arrow.style.transform = 'rotate(180deg)';
+        document.querySelectorAll('.article-container').forEach(el => el.classList.remove('active'));
+        container.classList.add('active');
+      } else {
+        content.classList.add('hidden');
+        arrow.style.transform = '';
+        container.classList.remove('active');
+      }
+    }
+
+    // Article acknowledgment logic
+    function acknowledgeArticle(e, num) {
+      e.stopPropagation();
+      // Mark this article as acknowledged
+      const container = document.querySelector('.article-container[data-article="' + num + '"]');
+      container.classList.add('disabled');
+      container.classList.remove('active');
+      // Open and enable next article
+      const next = document.querySelector('.article-container[data-article="' + (num + 1) + '"]');
+      if (next) {
+        next.classList.remove('disabled');
+        toggleArticle(num + 1);
+      } else {
+        // If last article, show final commitment button
+        document.getElementById('final-commitment').classList.remove('hidden');
+      }
+    }
+
+    // Final commitment button
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('commit-btn')?.addEventListener('click', function() {
+        window.location.href = 'location.html';
+      });
+      // Open first article by default
+      toggleArticle(1);
+    });
+  </script>
+</body>
+</html>

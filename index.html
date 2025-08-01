@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruthRise</title>
+  <!-- Tailwind CSS CDN for demo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS for animations -->
+  <link href="assets/css/aos.css" rel="stylesheet">
+  <script src="assets/js/aos.js"></script>
+  <!-- Custom styles -->
+  <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-white">
+  <!-- Navigation -->
+  <nav class="sticky top-0 bg-[var(--dark-bg)] shadow z-10">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-[var(--light-text)]">TruthRise</a>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-[var(--light-text)] text-2xl">☰</button>
+      </div>
+      <div id="menu" class="hidden md:flex space-x-4">
+        <a href="#" id="login-btn" class="text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Login</a>
+        <a href="main-app/dashboard.html" id="onboarding-btn" class="cta-primary text-[var(--accent-text)] pulse-glow">Start Onboarding</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Login Modal Only -->
+  <div id="login-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div class="bg-[var(--dark-bg)] p-8 rounded-lg shadow-lg max-w-md w-full mx-4 border border-[var(--brand-cyan)]">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[var(--light-text)]">Login to TruthRise</h2>
+        <button id="close-login-modal" class="text-[var(--light-text)] hover:text-[var(--brand-cyan)] text-2xl">&times;</button>
+      </div>
+      <form id="login-form">
+        <div class="mb-4">
+          <label for="login-email" class="block text-[var(--light-text)] mb-2">Email</label>
+          <input type="email" id="login-email" required class="w-full p-3 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)] focus:border-[var(--brand-cyan)] focus:outline-none">
+        </div>
+        <div class="mb-6">
+          <label for="login-password" class="block text-[var(--light-text)] mb-2">Password</label>
+          <input type="password" id="login-password" required class="w-full p-3 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)] focus:border-[var(--brand-cyan)] focus:outline-none">
+        </div>
+        <button type="submit" class="w-full cta-primary text-[var(--accent-text)] pulse-glow mb-4">Login</button>
+      </form>
+      <div id="login-success" class="hidden text-[var(--highlight-yellow)] mt-4 text-center">Login successful! Redirecting...</div>
+      <div class="text-center mt-4">
+        <span class="text-[var(--light-text)]">Don't have an account?</span>
+        <a href="main-app/dashboard.html" id="onboarding-link" class="text-[var(--brand-cyan)] hover:underline ml-1">Start onboarding</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="bg-[var(--dark-bg)] py-20 text-center">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold text-[var(--light-text)] mb-4">Truth Deserves a Platform</h1>
+      <p class="text-xl text-[var(--light-text)] mb-8">Post a case. Fund an investigation. Restore justice.</p>
+      <div class="space-x-4">
+        <a href="main-app/case-submission.html" class="cta-primary text-[var(--accent-text)] pulse-glow">Start Your Case</a>
+        <a href="main-app/case-list.html" class="cta-outline text-[var(--brand-cyan)]">Join as Contributor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How TruthRise Works -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[var(--accent-text)] mb-12" data-aos="fade-up">How TruthRise Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up">
+          <div class="text-4xl font-bold text-[var(--brand-cyan)] mb-4">1</div>
+          <h3 class="text-xl font-semibold mb-2">Share Your Case</h3>
+          <p class="text-gray-600">Submit your story and evidence. Your identity is safe. You decide when to go public.</p>
+        </div>
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-4xl font-bold text-[var(--brand-cyan)] mb-4">2</div>
+          <h3 class="text-xl font-semibold mb-2">Fund Investigations</h3>
+          <p class="text-gray-600">Use TRUTH credits to request help from vetted contributors and analysts.</p>
+        </div>
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-4xl font-bold text-[var(--brand-cyan)] mb-4">3</div>
+          <h3 class="text-xl font-semibold mb-2">Expose & Escalate</h3>
+          <p class="text-gray-600">When evidence is validated, publish to the Wall of Shame or forward to authorities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features -->
+  <section class="py-16 bg-[var(--dark-bg)] text-[var(--light-text)]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Platform Features</h2>
+      <div class="flex justify-center space-x-4 mb-8">
+        <button id="victim-btn" class="cta-primary text-[var(--accent-text)] pulse-glow">Victim</button>
+        <button id="contributor-btn" class="cta-outline text-[var(--brand-cyan)]">Contributor</button>
+      </div>
+      <div id="victim-content" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up">
+          <h3 class="text-xl font-semibold mb-2">Post a Case</h3>
+          <p class="text-gray-600">Submit scam details securely. Control if it stays private, pseudonymous, or goes public.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-2">Bounty System</h3>
+          <p class="text-gray-600">Fund investigations with TRUTH credits. Track contributor progress in real-time.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-2">Escalation Tools</h3>
+          <p class="text-gray-600">Export reports to authorities. Publish on the Wall of Shame after validation.</p>
+        </div>
+      </div>
+      <div id="contributor-content" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden">
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up">
+          <h3 class="text-xl font-semibold mb-2">TRUTH Wallet</h3>
+          <p class="text-gray-600">Track earnings from bounties. Use TRUTH for tools and training inside the app.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-2">Investigation Toolkit</h3>
+          <p class="text-gray-600">Access OSINT tools, scam DBs, and collaborate via internal case notes.</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow text-[var(--accent-text)]" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-2">Reputation System</h3>
+          <p class="text-gray-600">Earn points per validated contribution. Unlock perks, badges, and trust levels.</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#contact" class="cta-primary text-[var(--accent-text)] pulse-glow">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We're Different -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[var(--accent-text)] mb-12" data-aos="fade-up">Why We’re Different</h2>
+      <p class="text-center text-gray-600 mb-8" data-aos="fade-up">Truth, not promises. TruthRise isn’t a “recovery firm.” We’re a civic platform that empowers victims, not exploits them.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up">
+          <h3 class="text-xl font-semibold mb-2">Real Transparency</h3>
+          <p class="text-gray-600">All actions and bounties are public. Verified. Auditable. Nothing hidden.</p>
+        </div>
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-semibold mb-2">Community Governance</h3>
+          <p class="text-gray-600">Decisions are made by contributors and members. Not hidden owners.</p>
+        </div>
+        <div class="text-center bg-white p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-2">Contributor-Powered</h3>
+          <p class="text-gray-600">Experts, not bots. Verified humans investigate, support, and protect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-[var(--dark-bg)] text-[var(--light-text)]">
+    <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-4">Want to Know the Team?</h2>
+      <p class="mb-8">TruthRise is not a call center or a ghost firm. We’re real people building civic justice, together.</p>
+      <form id="contact-form" class="max-w-md mx-auto">
+        <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]">
+        <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]">
+        <textarea placeholder="Your Message" class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]"></textarea>
+        <button type="submit" class="cta-primary text-[var(--accent-text)] pulse-glow">Contact Us</button>
+      </form>
+      <div id="contact-success" class="hidden text-[var(--highlight-yellow)] mt-4">Message sent successfully!</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--dark-bg)] text-[var(--light-text)] py-12">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">TruthRise</h3>
+        <p>A civic platform empowering individuals to fight scams and fraud through collective action.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Platform</h3>
+        <a href="main-app/case-list.html" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">How It Works</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Success Stories</a>
+        <a href="main-app/wall-of-shame.html" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Wall of Shame</a>
+        <a href="main-app/truth-bank.html" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">TRUTH Bank</a>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Company</h3>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">About Us</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Careers</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Press</a>
+        <a href="#contact" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Contact</a>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Legal</h3>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Terms of Service</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Privacy Policy</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Constitution</a>
+        <a href="#" class="block text-[var(--light-text)] hover:text-[var(--brand-cyan)]">Guidelines</a>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <p class="text-[var(--light-text)]">© 2025 TruthRise. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+
+    // Nav toggle
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+
+    // Onboarding button in nav
+    document.getElementById('onboarding-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'truthrise-onboarding/src/constitution.html';
+    });
+
+    // Onboarding link in login modal
+    document.addEventListener('DOMContentLoaded', function() {
+      var onboardingLink = document.getElementById('onboarding-link');
+      if (onboardingLink) {
+        onboardingLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('login-modal').classList.add('hidden');
+          window.location.href = 'truthrise-onboarding/src/constitution.html';
+        });
+      }
+    });
+
+    // Victim/Contributor toggle
+    const victimBtn = document.getElementById('victim-btn');
+    const contributorBtn = document.getElementById('contributor-btn');
+    const victimContent = document.getElementById('victim-content');
+    const contributorContent = document.getElementById('contributor-content');
+    victimBtn.addEventListener('click', () => {
+      victimContent.classList.remove('hidden');
+      contributorContent.classList.add('hidden');
+      victimBtn.classList.add('cta-primary', 'text-[var(--accent-text)]', 'pulse-glow');
+      victimBtn.classList.remove('cta-outline', 'text-[var(--brand-cyan)]');
+      contributorBtn.classList.add('cta-outline', 'text-[var(--brand-cyan)]');
+      contributorBtn.classList.remove('cta-primary', 'text-[var(--accent-text)]', 'pulse-glow');
+    });
+    contributorBtn.addEventListener('click', () => {
+      contributorContent.classList.remove('hidden');
+      victimContent.classList.add('hidden');
+      contributorBtn.classList.add('cta-primary', 'text-[var(--accent-text)]', 'pulse-glow');
+      contributorBtn.classList.remove('cta-outline', 'text-[var(--brand-cyan)]');
+      victimBtn.classList.add('cta-outline', 'text-[var(--brand-cyan)]');
+      victimBtn.classList.remove('cta-primary', 'text-[var(--accent-text)]', 'pulse-glow');
+    });
+
+    // Mock contact form submission
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('contact-success').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
