@@ -37,15 +37,60 @@ function initMobileNav() {
         });
     }
     
-    // Sidebar toggle for dashboard pages
+    // Enhanced sidebar toggle for dashboard pages
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const body = document.body;
+    
+    function toggleSidebar() {
+        if (!sidebar) return;
+        
+        sidebar.classList.toggle('sidebar-open');
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+        
+        // Prevent body scroll when sidebar is open on mobile
+        if (sidebar.classList.contains('sidebar-open')) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = '';
+        }
+    }
     
     if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('sidebar-open');
+        sidebarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleSidebar();
         });
     }
+    
+    // Close sidebar when clicking overlay
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            if (sidebar && sidebar.classList.contains('sidebar-open')) {
+                toggleSidebar();
+            }
+        });
+    }
+    
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('sidebar-open')) {
+            toggleSidebar();
+        }
+    });
+    
+    // Handle window resize - close sidebar on desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && sidebar && sidebar.classList.contains('sidebar-open')) {
+            sidebar.classList.remove('sidebar-open');
+            if (overlay) overlay.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
 }
 
 // Smooth scrolling for internal links
