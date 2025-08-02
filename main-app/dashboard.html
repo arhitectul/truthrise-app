@@ -2,12 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" co    <div>
-      <a href="#" id="logout-btn" class="flex items-center text-light-text hover:text-brand-cyan transition-colors">
-        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013 3v1"></path></svg>
-        Logout
-      </a>
-    </div>"width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - TruthRise</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="../assets/css/aos.css" rel="stylesheet">
@@ -191,7 +186,7 @@
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       if (!isLoggedIn) {
         // Redirect to index if not logged in
-        window.location.href = '../index.html';
+        window.location.href = '/index.html';
         return;
       }
       
@@ -228,12 +223,9 @@
           localStorage.removeItem('loginTime');
           
           // Redirect to index page
-          window.location.href = '../index.html';
+          window.location.href = '/index.html';
         });
       }
-    });
-  </script>
-      });
     });
   </script>
 </body>

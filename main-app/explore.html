@@ -259,7 +259,7 @@
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       if (!isLoggedIn) {
         // Redirect to index if not logged in
-        window.location.href = '../index.html';
+        window.location.href = '/index.html';
         return;
       }
       
@@ -285,7 +285,7 @@
           localStorage.removeItem('loginTime');
           
           // Redirect to index page
-          window.location.href = '../index.html';
+          window.location.href = '/index.html';
         });
       }
     });
