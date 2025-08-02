@@ -100,65 +100,74 @@
   <!-- Main Content -->
   <main class="main-content ml-64 py-16">
     <div class="container mx-auto px-4">
-      <div class="p-6 text-white">
-        <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Truth Bank</h1>
-        <p class="text-lg mb-8 text-gray-400" data-aos="fade-up" data-aos-delay="100">Live metrics of the TruthRise ecosystem.</p>
+      <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Truth Bank</h1>
+      <p class="text-lg max-w-2xl mb-12 text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        Live metrics of the TruthRise ecosystem. Track the flow and value of TRUTH credits, bounties, and platform activity below.
+      </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Counter Template -->
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Truth Sold</h2>
-            <p class="text-2xl font-bold text-green-400 counter" data-target="324000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Truth Circulating</h2>
-            <p class="text-2xl font-bold text-cyan-400 counter" data-target="281000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Truth Available to Users</h2>
-            <p class="text-2xl font-bold text-white counter" data-target="160000">0</p>
-          </div>
-
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Collected by Contributors</h2>
-            <p class="text-2xl font-bold text-blue-400 counter" data-target="83000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Burned by Contributors</h2>
-            <p class="text-2xl font-bold text-red-500 counter" data-target="32000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Spent in Shop</h2>
-            <p class="text-2xl font-bold text-yellow-400 counter" data-target="14500">0</p>
-          </div>
-
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Bounties Paid Out</h2>
-            <p class="text-2xl font-bold text-green-300 counter" data-target="90000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">$TRUTH Treasury</h2>
-            <p class="text-2xl font-bold text-cyan-300 counter" data-target="54000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Platform Revenue (USD)</h2>
-            <p class="text-2xl font-bold text-green-500 counter" data-target="123000">0</p>
-          </div>
-
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">$ROTC LP Funded</h2>
-            <p class="text-2xl font-bold text-indigo-400 counter" data-target="61000">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Avg Purchase by Buyers</h2>
-            <p class="text-2xl font-bold text-white counter" data-target="275">0</p>
-          </div>
-          <div class="bg-gray-900 rounded-lg p-4 shadow text-center hover:shadow-xl transition">
-            <h2 class="text-lg font-semibold text-gray-300">Avg Burn by Contributors</h2>
-            <p class="text-2xl font-bold text-white counter" data-target="150">0</p>
-          </div>
+      <!-- Stats Section: match dashboard style -->
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold mb-2">Truth Sold</h3>
+          <p class="text-3xl font-bold text-green-400 counter" data-target="324000">0</p>
+          <p class="text-sm text-gray-400">Total TRUTH credits sold</p>
         </div>
-      </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-xl font-semibold mb-2">Truth Circulating</h3>
+          <p class="text-3xl font-bold text-cyan-400 counter" data-target="281000">0</p>
+          <p class="text-sm text-gray-400">TRUTH currently in circulation</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="text-xl font-semibold mb-2">Truth Available to Users</h3>
+          <p class="text-3xl font-bold text-white counter" data-target="160000">0</p>
+          <p class="text-sm text-gray-400">TRUTH available for use</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="500">
+          <h3 class="text-xl font-semibold mb-2">Collected by Contributors</h3>
+          <p class="text-3xl font-bold text-blue-400 counter" data-target="83000">0</p>
+          <p class="text-sm text-gray-400">TRUTH earned by contributors</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="600">
+          <h3 class="text-xl font-semibold mb-2">Burned by Contributors</h3>
+          <p class="text-3xl font-bold text-red-500 counter" data-target="32000">0</p>
+          <p class="text-sm text-gray-400">TRUTH burned by contributors</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="700">
+          <h3 class="text-xl font-semibold mb-2">Spent in Shop</h3>
+          <p class="text-3xl font-bold text-yellow-400 counter" data-target="14500">0</p>
+          <p class="text-sm text-gray-400">TRUTH spent in shop</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="800">
+          <h3 class="text-xl font-semibold mb-2">Bounties Paid Out</h3>
+          <p class="text-3xl font-bold text-green-300 counter" data-target="90000">0</p>
+          <p class="text-sm text-gray-400">TRUTH paid out in bounties</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="900">
+          <h3 class="text-xl font-semibold mb-2">$TRUTH Treasury</h3>
+          <p class="text-3xl font-bold text-cyan-300 counter" data-target="54000">0</p>
+          <p class="text-sm text-gray-400">TRUTH in treasury</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="1000">
+          <h3 class="text-xl font-semibold mb-2">Platform Revenue (USD)</h3>
+          <p class="text-3xl font-bold text-green-500 counter" data-target="123000">0</p>
+          <p class="text-sm text-gray-400">Total platform revenue</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="1100">
+          <h3 class="text-xl font-semibold mb-2">$ROTC LP Funded</h3>
+          <p class="text-3xl font-bold text-indigo-400 counter" data-target="61000">0</p>
+          <p class="text-sm text-gray-400">ROTC liquidity pool funded</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="1200">
+          <h3 class="text-xl font-semibold mb-2">Avg Purchase by Buyers</h3>
+          <p class="text-3xl font-bold text-white counter" data-target="275">0</p>
+          <p class="text-sm text-gray-400">Average TRUTH purchase</p>
+        </div>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="1300">
+          <h3 class="text-xl font-semibold mb-2">Avg Burn by Contributors</h3>
+          <p class="text-3xl font-bold text-white counter" data-target="150">0</p>
+          <p class="text-sm text-gray-400">Average TRUTH burn</p>
+        </div>
+      </section>
     </div>
   </main>
 

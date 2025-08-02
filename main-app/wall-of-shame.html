@@ -100,32 +100,34 @@
   <!-- Main Content -->
   <main class="main-content ml-64 py-16">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-8" data-aos="fade-up">Wall of Shame</h1>
-      <p class="text-lg max-w-2xl mb-8" data-aos="fade-up" data-aos-delay="100">
-        Publicly listed scammers and fraudulent entities reported by the community and verified by TruthRise.
+      <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Wall of Shame</h1>
+      <p class="text-lg max-w-2xl mb-12" data-aos="fade-up" data-aos-delay="100">
+        Publicly listed scammers and fraudulent entities reported by the community and verified by TruthRise. Search, filter, and explore the latest cases below.
       </p>
 
-      <!-- Search Bar -->
+      <!-- Search Bar: dashboard style -->
       <div class="mb-8 flex flex-col md:flex-row md:items-center gap-4">
-        <input id="searchInput" type="text" placeholder="Search by name, project, status..." class="w-full md:w-1/2 p-3 rounded-lg bg-gray-800 text-light-text border border-brand-cyan focus:outline-none focus:border-brand-cyan" />
+        <input id="searchInput" type="text" placeholder="Search by name, project, status..." class="w-full md:w-1/2 p-3 border rounded-lg bg-gray-800 text-light-text border-brand-cyan focus:border-brand-cyan focus:outline-none" />
       </div>
 
-      <!-- Wall of Shame Cards -->
-      <section id="wall-list" class="space-y-8">
+      <!-- Wall of Shame Cards: dashboard card grid style with AOS animations -->
+      <section id="wall-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Cards will be rendered here by JS -->
       </section>
 
-      <!-- Load More Button -->
+      <!-- Load More Button: dashboard style -->
       <div class="flex justify-center mt-8">
         <button id="loadMoreBtn" class="cta-outline text-brand-cyan px-8 py-3 rounded-lg border border-brand-cyan">Load More</button>
       </div>
 
-      <!-- Quick Actions -->
+      <!-- Quick Actions Section: dashboard style -->
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-6" data-aos="fade-up">Quick Actions</h2>
         <div class="flex flex-wrap gap-4">
           <a href="case-submission.html" class="cta-primary pulse-glow" data-aos="fade-up" data-aos-delay="100">Report a Scammer</a>
           <a href="case-list.html" class="cta-outline" data-aos="fade-up" data-aos-delay="200">View All Cases</a>
+          <a href="dashboard.html" class="cta-outline" data-aos="fade-up" data-aos-delay="300">Go to Dashboard</a>
+          <a href="truth-bank.html" class="cta-outline" data-aos="fade-up" data-aos-delay="400">View Truth Bank</a>
         </div>
       </section>
     </div>
@@ -188,27 +190,25 @@
     function renderPosts(posts) {
       const wallList = document.getElementById('wall-list');
       wallList.innerHTML = '';
-      posts.forEach(post => {
+      posts.forEach((post, idx) => {
         const card = document.createElement('div');
-        card.className = 'flex flex-col md:flex-row bg-gray-900 rounded-xl shadow-lg p-6 gap-6 relative';
+        card.className = 'bg-gray-900 rounded-lg shadow-lg p-4 flex flex-col gap-4 relative';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', String(200 + idx * 100));
         card.innerHTML = `
-          <img src="${post.image}" alt="${post.title}" class="w-28 h-28 object-cover rounded-lg mb-4 md:mb-0" />
-          <div class="flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="text-2xl font-bold mb-2">${post.title}</h3>
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="inline-block px-3 py-1 rounded-full bg-${post.statusColor} text-white text-xs font-semibold">${post.status}</span>
-                <span class="inline-block px-3 py-1 rounded-full bg-brand-cyan text-dark-bg text-xs font-semibold">${post.value}</span>
-                <span class="inline-block px-3 py-1 rounded-full bg-gray-700 text-gray-300 text-xs">Reported: ${post.reported}</span>
-              </div>
-              <p class="text-gray-300 mb-2">${post.description}</p>
-            </div>
-            <div class="flex gap-4 mt-2">
-              <button class="cta-outline text-brand-cyan px-4 py-2 rounded-lg border border-brand-cyan view-details-btn" data-id="${post.id}">View Details</button>
-              ${post.premium ? `<button class="cta-primary px-4 py-2 rounded-lg paywall-btn" data-id="${post.id}">Pay for Full Access</button>` : ''}
-            </div>
-            <div class="full-content mt-4 hidden text-gray-200 bg-gray-800 rounded-lg p-4">${post.fullContent}</div>
+          <img src="${post.image}" alt="${post.title}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2" />
+          <h3 class="text-xl font-bold mb-1 text-center">${post.title}</h3>
+          <div class="flex flex-wrap gap-2 justify-center mb-2">
+            <span class="inline-block px-3 py-1 rounded-full bg-${post.statusColor} text-white text-xs font-semibold">${post.status}</span>
+            <span class="inline-block px-3 py-1 rounded-full bg-brand-cyan text-dark-bg text-xs font-semibold">${post.value}</span>
+            <span class="inline-block px-3 py-1 rounded-full bg-gray-700 text-gray-300 text-xs">Reported: ${post.reported}</span>
           </div>
+          <p class="text-gray-300 mb-2 text-center">${post.description}</p>
+          <div class="flex gap-2 justify-center mt-2">
+            <button class="cta-outline text-brand-cyan px-3 py-1 rounded-lg border border-brand-cyan view-details-btn" data-id="${post.id}">View Details</button>
+            ${post.premium ? `<button class="cta-primary px-3 py-1 rounded-lg paywall-btn" data-id="${post.id}">Pay for Full Access</button>` : ''}
+          </div>
+          <div class="full-content mt-2 hidden text-gray-200 bg-gray-800 rounded-lg p-3">${post.fullContent}</div>
         `;
         wallList.appendChild(card);
       });

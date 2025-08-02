@@ -222,6 +222,8 @@
       products.forEach((product, index) => {
         const card = document.createElement('div');
         card.className = 'bg-gray-900 rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer flex flex-col h-80 relative';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', String(200 + index * 100));
         card.innerHTML = `
           <div class="flex-shrink-0 flex items-center justify-center h-32 w-full mb-3 bg-gray-800 rounded-lg">
             <img src="${product.image}" alt="${product.title}" class="object-contain h-24 w-24" onerror="this.src='https://placehold.co/96x96/1bbfdb/23272b?text=Product'" />
