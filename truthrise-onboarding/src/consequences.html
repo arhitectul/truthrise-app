@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthRise: Scammer Consequences</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand-cyan: #23D2EE;
+            --highlight-yellow: #FFE800;
+            --dark-bg: #000000;
+            --light-text: #ffffff;
+            --accent-text: #1A1A1A;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: 'Inter', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .text-brand-cyan {
+            color: var(--brand-cyan) !important;
+        }
+
+        .bg-dark-bg {
+            background-color: var(--dark-bg) !important;
+        }
+
+        .consequence-card {
+            background-color: #1a202c;
+            border-left: 4px solid var(--brand-cyan);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .consequence-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(35, 210, 238, 0.1);
+        }
+
+        .consequence-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .consequence-card.active .consequence-content {
+            max-height: 200px;
+        }
+
+        .cta-primary {
+            background-color: var(--brand-cyan);
+            color: var(--accent-text);
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            display: inline-block;
+        }
+
+        .cta-primary:hover {
+            background-color: #1BBFDB;
+            transform: translateY(-2px);
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0px var(--brand-cyan); }
+            50% { box-shadow: 0 0 20px var(--brand-cyan); }
+        }
+
+        .modal-backdrop {
+            backdrop-filter: blur(4px);
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 50;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1a202c;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid var(--brand-cyan);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-primary {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl md:text-5xl font-bold text-center text-brand-cyan mb-8" data-aos="zoom-in">TruthRise<span class="text-gray-400">.io</span></h1>
+        
+        <p class="text-lg md:text-xl text-center mb-10 text-gray-300" data-aos="fade-up" data-aos-delay="100">
+            You’re running scams on X, thinking you’re untouchable. <a href="https://truthrise.io" class="text-brand-cyan underline hover:text-highlight-yellow">TruthRise.io</a> is watching. Keep scamming, and get burned. Or join us, code epic visuals, and earn X’s respect. Choose wisely.
+        </p>
+        
+        <h2 class="text-2xl md:text-3xl font-semibold text-brand-cyan mb-6" data-aos="fade-up" data-aos-delay="200">What Happens If You Keep Scamming</h2>
+        <div class="space-y-4">
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-lg font-bold text-brand-cyan">Your Alias Goes Viral</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Your handle, wallet, and domains get pinned to our public Wall of Shame. Every X user will see it. Searchable. Shareable. Forever.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="350">
+                <h3 class="text-lg font-bold text-brand-cyan">We See Through Your Mask</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Our OSINT crew and blockchain trackers map your network—wallets, IPs, accomplices. You’re not anonymous; you’re just not exposed yet.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="text-lg font-bold text-brand-cyan">Your Moves Become Evidence</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Every DM, post, or transaction is archived. We build airtight cases for INTERPOL, FBI, and cybercrime units.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="450">
+                <h3 class="text-lg font-bold text-brand-cyan">We Build Legal Payloads</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Verified reports with time-stamped evidence are sent to INTERPOL, EUROPOL, FBI, and cybercrime units. You’re not just our problem—you’re theirs.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-lg font-bold text-brand-cyan">Your Crypto Becomes Toxic</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Blockchain forensics flag your wallets. Legit exchanges freeze you out. Your funds? Untouchable.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="550">
+                <h3 class="text-lg font-bold text-brand-cyan">Your Sites Get Wiped</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>We report your domains to DNS providers, Google, and hosts. Your scam pages go dark. Your rep? Done.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="600">
+                <h3 class="text-lg font-bold text-brand-cyan">X Turns on You</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Our alerts hit X, apps, and communities. Your next victim will know your name before you DM them.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="650">
+                <h3 class="text-lg font-bold text-brand-cyan">Bounties Hunt You Down</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Victims and insiders drop TRUTH bounties for your playbooks, addresses, or leaks. The X community will cash in.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="700">
+                <h3 class="text-lg font-bold text-brand-cyan">No Fresh Start</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Our Civic Score engine flags every new wallet, IP, or alias. Trust? You’ll never earn it back.</p>
+                </div>
+            </div>
+            <div class="consequence-card p-4 rounded-md" data-aos="fade-up" data-aos-delay="750">
+                <h3 class="text-lg font-bold text-brand-cyan">We Empower Victims to Speak</h3>
+                <div class="consequence-content text-gray-300">
+                    <p>Victims you silenced will share their stories on our platform, turning your scams into their strength. TruthRise is where silence ends.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-10" data-aos="zoom-in" data-aos-delay="800">
+            <p class="text-xl mb-4 text-gray-300">
+                Got skills? Don’t get exposed—build with us. Code interactive dashboards to expose scams and protect X users.
+            </p>
+            <a href="#" class="cta-primary pulse-glow" onclick="openModal()">Join TruthRise Now</a>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="joinModal">
+        <div class="modal-content" data-aos="zoom-in">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 class="text-2xl font-bold text-brand-cyan mb-4">Join the TruthRise Mission</h2>
+            <p class="text-gray-300 mb-6">
+                Use your coding skills to build interactive .html visuals like scam trackers and victim portals. Help us expose fraud and protect the X community. Start fresh, earn respect, and make a real impact.
+            </p>
+            <a href="https://truthrise.io/contact" class="cta-primary pulse-glow">Contact Us Now</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Toggle consequence card content
+        document.querySelectorAll('.consequence-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Modal functionality
+        function openModal() {
+            document.getElementById('joinModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('joinModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('joinModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('joinModal')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
