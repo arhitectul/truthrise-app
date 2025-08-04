@@ -1,0 +1,177 @@
+ <section class="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+  <!-- Background effects -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[#23D2EE] rounded-full blur-3xl opacity-20"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500 rounded-full blur-3xl opacity-15"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 text-center relative z-10">
+    <!-- Badge -->
+    <div class="inline-flex items-center px-4 py-2 bg-[#23D2EE]/10 border border-[#23D2EE]/30 rounded-full mb-8" data-aos="fade-up" data-aos-delay="100">
+      <span class="w-2 h-2 bg-[#23D2EE] rounded-full mr-2 animate-pulse"></span>
+      <span class="text-[#23D2EE] text-sm font-medium">LIVE CASE STUDY</span>
+    </div>
+
+    <!-- Enhanced title with gradient -->
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+      <span class="bg-gradient-to-r from-white via-[#23D2EE] to-white bg-clip-text text-transparent">
+        AI Scammers vs. TruthRise
+      </span>
+      <br>
+      <span class="text-3xl md:text-4xl text-gray-300 font-medium">& Breadcrumbs.app</span>
+    </h2>
+    
+    <p class="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+      Watch how our platform and <span class="text-[#23D2EE] font-semibold">Breadcrumbs.app</span> analytics 
+      exposed a sophisticated AI scammer. <span class="text-white font-medium">Truth always rises.</span>
+    </p>
+
+    <!-- Enhanced video container -->
+    <div class="relative max-w-5xl mx-auto mb-12" data-aos="zoom-in" data-aos-delay="600">
+      <div class="video-container relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-[#23D2EE]/20">
+        <!-- Video element -->
+        <video 
+          id="scammer-video" 
+          class="w-full aspect-video object-cover"
+          poster="assets/videos/truthrise-scammer-poster.jpg" 
+          aria-label="AI Scammers vs. TruthRise Video"
+          preload="metadata"
+        >
+          <source src="assets/videos/truthrise-scammer-video.mp4" type="video/mp4">
+          <div class="flex items-center justify-center h-64 bg-gray-800">
+            <p class="text-gray-400">Your browser does not support the video tag.</p>
+          </div>
+        </video>
+        
+        <!-- Custom video overlay -->
+        <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 hover:bg-black/20">
+          <button class="play-pause-btn group flex items-center justify-center w-20 h-20 bg-[#23D2EE] rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300" aria-label="Play or Pause Video">
+            <svg class="w-8 h-8 text-black group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+              <path class="play-icon" d="M8 5v14l11-7z"/>
+              <path class="pause-icon hidden" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="video-progress absolute bottom-0 left-0 right-0 h-1 bg-gray-700">
+          <div class="progress-bar h-full bg-[#23D2EE] transition-all duration-100" style="width: 0%"></div>
+        </div>
+
+        <!-- Video glow effect -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-[#23D2EE]/20 via-blue-500/20 to-[#23D2EE]/20 rounded-2xl blur opacity-75"></div>
+      </div>
+
+      <!-- Video stats -->
+      <div class="flex justify-center items-center gap-8 mt-6 text-sm text-gray-400" data-aos="fade-up" data-aos-delay="800">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+          </svg>
+          <span>12.5K views</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+          </svg>
+          <span>8:45 duration</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#23D2EE]" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+          </svg>
+          <span>98% success rate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced CTA buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="1000">
+      <a href="main-app/dashboard.html" class="group relative inline-flex items-center px-8 py-4 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <span class="relative z-10 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+          Join the Fight
+        </span>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+      </a>
+      
+      <a href="main-app/case-list.html" class="inline-flex items-center px-8 py-4 border-2 border-[#23D2EE] text-[#23D2EE] font-semibold rounded-xl hover:bg-[#23D2EE] hover:text-black transition-all duration-300">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        View More Cases
+      </a>
+    </div>
+  </div>
+
+  <!-- Enhanced CSS for video functionality -->
+  <style>
+    .video-container:hover .video-overlay {
+      opacity: 1;
+    }
+    
+    .video-container video::-webkit-media-controls {
+      display: none;
+    }
+    
+    .video-container video::-webkit-media-controls-enclosure {
+      display: none;
+    }
+  </style>
+
+  <!-- Enhanced JavaScript for video controls -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('scammer-video');
+      const overlay = document.querySelector('.video-overlay');
+      const playPauseBtn = document.querySelector('.play-pause-btn');
+      const progressBar = document.querySelector('.progress-bar');
+      const playIcon = document.querySelector('.play-icon');
+      const pauseIcon = document.querySelector('.pause-icon');
+
+      // Play/Pause functionality
+      function togglePlayPause() {
+        if (video.paused) {
+          video.play();
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+          overlay.style.opacity = '0';
+        } else {
+          video.pause();
+          playIcon.classList.remove('hidden');
+          pauseIcon.classList.add('hidden');
+          overlay.style.opacity = '1';
+        }
+      }
+
+      playPauseBtn.addEventListener('click', togglePlayPause);
+      video.addEventListener('click', togglePlayPause);
+
+      // Progress bar update
+      video.addEventListener('timeupdate', function() {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = progress + '%';
+      });
+
+      // Show/hide overlay on hover
+      video.addEventListener('mouseenter', function() {
+        if (!video.paused) overlay.style.opacity = '0.7';
+      });
+
+      video.addEventListener('mouseleave', function() {
+        if (!video.paused) overlay.style.opacity = '0';
+      });
+
+      // Reset when video ends
+      video.addEventListener('ended', function() {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        overlay.style.opacity = '1';
+        progressBar.style.width = '0%';
+      });
+    });
+  </script>
+</section>
