@@ -1,0 +1,178 @@
+<!-- Navigation Component for Index Page -->
+<nav class="sticky top-0 nav-backdrop shadow-lg z-50 border-b border-[#23D2EE]/20">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-8 w-auto sm:h-10" data-aos="fade-right" data-aos-delay="200">
+        <a href="#" class="text-xl sm:text-2xl font-bold text-[#23D2EE] flex items-center gap-2">
+          <span class="hidden sm:inline">TruthRise</span>
+          <span class="sm:hidden">TR</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="#" id="login-btn" class="text-white hover:text-[#23D2EE] transition-colors duration-200 font-medium">Login</a>
+        <a href="truthrise-onboarding/src/constitution.html" id="onboarding-btn" class="bg-[#23D2EE] text-black font-semibold px-6 py-2 rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg">
+          Start Onboarding
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="mobile-menu-button md:hidden text-[#23D2EE] focus:outline-none">
+        <svg class="w-6 h-6 transition-transform duration-300" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="menu" class="mobile-nav-menu md:hidden">
+      <div class="px-4 py-6 space-y-4">
+        <a href="#" id="mobile-login-btn" class="mobile-nav-link block text-white hover:text-[#23D2EE] py-3 px-4 font-medium">
+          <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          Login
+        </a>
+        <a href="truthrise-onboarding/src/constitution.html" id="mobile-onboarding-btn" class="mobile-nav-link block bg-[#23D2EE] text-black font-semibold py-3 px-4 rounded-lg text-center shadow-lg">
+          <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          Start Your Journey
+        </a>
+        <div class="border-t border-[#23D2EE]/30 pt-4 mt-4">
+          <a href="main-app/case-list.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+            📋 View Cases
+          </a>
+          <a href="main-app/truth-bank.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+            🏦 TRUTH Bank
+          </a>
+          <a href="main-app/wall-of-shame.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+            🔥 Wall of Shame
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Navigation Styles -->
+<style>
+  /* Navigation Styles */
+  .mobile-nav-menu {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  .mobile-nav-menu.active {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-link {
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    margin: 4px 0;
+  }
+
+  .mobile-nav-link:hover {
+    background: rgba(35, 210, 238, 0.15);
+    transform: translateX(12px) scale(1.02);
+  }
+
+  .nav-backdrop {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-nav-menu {
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(35, 210, 238, 0.3);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+  }
+</style>
+
+<!-- Navigation JavaScript -->
+<script>
+  // Mobile Navigation Script
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile nav toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const menuOpenPath = menuIcon ? menuIcon.querySelector('.menu-open') : null;
+    const menuClosePath = menuIcon ? menuIcon.querySelector('.menu-close') : null;
+    
+    if (menuToggle && menu) {
+      menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle menu visibility
+        menu.classList.toggle('active');
+        
+        // Toggle button state
+        menuToggle.classList.toggle('active');
+        
+        // Toggle icon
+        if (menu.classList.contains('active')) {
+          if (menuOpenPath) menuOpenPath.classList.add('hidden');
+          if (menuClosePath) menuClosePath.classList.remove('hidden');
+        } else {
+          if (menuOpenPath) menuOpenPath.classList.remove('hidden');
+          if (menuClosePath) menuClosePath.classList.add('hidden');
+        }
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!menuToggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          if (menuOpenPath) menuOpenPath.classList.remove('hidden');
+          if (menuClosePath) menuClosePath.classList.add('hidden');
+        }
+      });
+
+      // Close menu when clicking on links
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          menu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          if (menuOpenPath) menuOpenPath.classList.remove('hidden');
+          if (menuClosePath) menuClosePath.classList.add('hidden');
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          if (menuOpenPath) menuOpenPath.classList.remove('hidden');
+          if (menuClosePath) menuClosePath.classList.add('hidden');
+        }
+      });
+    }
+
+    // Login Modal functionality (placeholder for consistency)
+    const loginBtns = document.querySelectorAll('#login-btn, #mobile-login-btn');
+    loginBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Redirect to login page or show modal
+        alert('Login functionality would be implemented here');
+      });
+    });
+  });
+</script>
