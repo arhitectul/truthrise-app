@@ -198,7 +198,7 @@
       </div>
       <div id="menu" class="hidden md:flex md:space-x-4 absolute md:relative top-full md:top-auto left-0 md:left-auto w-full md:w-auto bg-black md:bg-transparent p-4 md:p-0 border-t md:border-t-0 border-[#23D2EE] md:border-none">
         <a href="#" id="login-btn" class="block md:inline text-white hover:text-[#23D2EE] mb-2 md:mb-0">Login</a>
-        <a href="main-app/dashboard.html" id="onboarding-btn" class="block md:inline bg-[#23D2EE] text-black font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition">Start Onboarding</a>
+        <a href="truthrise-onboarding/src/constitution.html" id="onboarding-btn" class="block md:inline bg-[#23D2EE] text-black font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition">Start Onboarding</a>
       </div>
     </div>
   </nav>
@@ -380,7 +380,7 @@
 
         <!-- Enhanced CTA buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="1000">
-          <a href="main-app/dashboard.html" class="group relative inline-flex items-center px-8 py-4 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <a href="truthrise-onboarding/src/constitution.html" class="group relative inline-flex items-center px-8 py-4 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
             <span class="relative z-10 flex items-center gap-2">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -394,7 +394,7 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
-            View More Cases
+            View Cases
           </a>
         </div>
       </div>
@@ -466,6 +466,8 @@
       const loginBtn = document.getElementById('login-btn');
       const loginModal = document.getElementById('login-modal');
       const closeLoginModal = document.getElementById('close-login-modal');
+      const loginForm = document.getElementById('login-form');
+      const loginSuccess = document.getElementById('login-success');
 
       if (loginBtn && loginModal) {
         loginBtn.addEventListener('click', function(e) {
@@ -488,17 +490,50 @@
           }
         });
       }
+
+      // Handle login form submission
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const email = document.getElementById('login-email').value;
+          const password = document.getElementById('login-password').value;
+          
+          // Simple validation
+          if (email && password) {
+            // Store login state
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', email.split('@')[0]);
+            localStorage.setItem('loginTime', new Date().toISOString());
+            
+            // Show success message
+            if (loginSuccess) {
+              loginSuccess.classList.remove('hidden');
+            }
+            
+            // Redirect to dashboard after a short delay
+            setTimeout(function() {
+              window.location.href = 'main-app/dashboard.html';
+            }, 1500);
+          }
+        });
+      }
     });
 
-    // Onboarding button in nav
-    document.getElementById('onboarding-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = 'truthrise-onboarding/src/constitution.html';
-    });
-
-    // Onboarding link in login modal
+    // Onboarding buttons
     document.addEventListener('DOMContentLoaded', function() {
-      var onboardingLink = document.getElementById('onboarding-link');
+      // Onboarding button in nav
+      const onboardingBtn = document.getElementById('onboarding-btn');
+      if (onboardingBtn) {
+        onboardingBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'truthrise-onboarding/src/constitution.html';
+        });
+      }
+
+      // Onboarding link in login modal
+      const onboardingLink = document.getElementById('onboarding-link');
       if (onboardingLink) {
         onboardingLink.addEventListener('click', function(e) {
           e.preventDefault();

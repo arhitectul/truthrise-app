@@ -100,7 +100,21 @@
   <script>
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Optionally, store registration info or send to backend here
+      
+      // Get form data
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const role = document.getElementById('role').value;
+      
+      // Set login state for demo
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', email.split('@')[0]);
+      localStorage.setItem('userPhone', phone);
+      localStorage.setItem('userRole', role);
+      localStorage.setItem('loginTime', new Date().toISOString());
+      
+      // Redirect to dashboard
       window.location.href = '../../main-app/dashboard.html';
     });
   </script>
