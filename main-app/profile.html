@@ -93,11 +93,293 @@
   <!-- Main Content -->
   <main class="main-content ml-64 py-16">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-8" data-aos="fade-up">Your Profile</h1>
-      <p class="text-lg max-w-2xl mb-12" data-aos="fade-up" data-aos-delay="100">
+      <h1 class="text-3xl font-bold mb-2" data-aos="fade-up">Your Profile</h1>
+      <p class="text-gray-400 mb-6" data-aos="fade-up" data-aos-delay="100">
         Manage your account details and view your activity.
       </p>
-      <!-- Add your profile content here -->
+
+      <!-- Civic Identity Panel -->
+      <div class="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 border-opacity-50 mb-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-brand-cyan bg-opacity-10 backdrop-blur-sm rounded-lg flex items-center justify-center mr-4 border border-brand-cyan border-opacity-20">
+            <span class="text-2xl">🧭</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">Civic Identity</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Username</p>
+            <p class="text-xl font-bold text-white">alaeddin</p>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Civic Role</p>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-green-400 rounded-full mr-2"></span>
+              <p class="text-xl text-brand-cyan font-bold">Advocate</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Account Age</p>
+            <div class="flex items-center">
+              <span class="text-lg mr-2">⏱️</span>
+              <p class="text-xl font-bold text-white">243 days</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">TRUST Score</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="text-lg mr-2">🛡️</span>
+                <p class="text-xl font-bold text-green-400">96%</p>
+              </div>
+              <div class="w-16 h-2 bg-gray-700 bg-opacity-30 rounded-full overflow-hidden">
+                <div class="w-full h-full bg-gradient-to-r from-green-400 to-green-500" style="width: 96%"></div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">2 minor violations</p>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Civic Score</p>
+            <p class="text-xl font-bold text-brand-cyan">1,540 pts</p>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Next Tier</p>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <span class="text-lg mr-2">🏛️</span>
+                <p class="text-lg font-bold text-white">Guardian</p>
+              </div>
+              <div class="w-full h-2 bg-gray-700 bg-opacity-30 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-brand-cyan to-blue-500" style="width: 77%"></div>
+              </div>
+              <p class="text-xs text-gray-400">77% complete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Settings -->
+      <div class="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 border-opacity-50 mb-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-blue-500 bg-opacity-10 backdrop-blur-sm rounded-lg flex items-center justify-center mr-4 border border-blue-500 border-opacity-20">
+            <span class="text-2xl">🔐</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">Account Settings</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <div class="flex items-center">
+              <span class="text-lg mr-3">📧</span>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Email</p>
+                <p class="text-white font-medium">alaeddin@example.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30 cursor-pointer hover:bg-gray-700 hover:bg-opacity-30 hover:border-brand-cyan hover:border-opacity-50 transition-all duration-300">
+            <div class="flex items-center">
+              <span class="text-lg mr-3">🔑</span>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wide">Security</p>
+                <p class="text-brand-cyan font-medium hover:text-white transition-colors">Change Password</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="text-lg mr-3">🔒</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wide">Two-Factor Auth</p>
+                  <p class="text-white font-medium">2FA</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                <span class="text-green-400 text-sm font-medium">Enabled</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="text-lg mr-3">📣</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wide">Notifications</p>
+                  <p class="text-white font-medium">Alerts</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                <span class="text-green-400 text-sm font-medium">Enabled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Activity -->
+      <div class="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 border-opacity-50 mb-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-yellow-500 bg-opacity-10 backdrop-blur-sm rounded-lg flex items-center justify-center mr-4 border border-yellow-500 border-opacity-20">
+            <span class="text-2xl">📁</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">My Case Activity</h2>
+        </div>
+        <div class="overflow-x-auto bg-gray-800 bg-opacity-10 backdrop-blur-sm rounded-lg border border-gray-600 border-opacity-30">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-700 border-opacity-30">
+                <th class="px-4 py-3 text-left text-xs text-gray-400 uppercase tracking-wide">Case ID</th>
+                <th class="px-4 py-3 text-left text-xs text-gray-400 uppercase tracking-wide">Status</th>
+                <th class="px-4 py-3 text-left text-xs text-gray-400 uppercase tracking-wide">Type</th>
+                <th class="px-4 py-3 text-left text-xs text-gray-400 uppercase tracking-wide">Points Earned</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-700 divide-opacity-30">
+              <tr class="hover:bg-gray-800 hover:bg-opacity-20 transition-colors duration-300">
+                <td class="px-4 py-4">
+                  <span class="text-brand-cyan font-mono font-bold">#3281</span>
+                </td>
+                <td class="px-4 py-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-600 bg-opacity-15 backdrop-blur-sm text-yellow-400 border border-yellow-600 border-opacity-30">
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
+                    Under Review
+                  </span>
+                </td>
+                <td class="px-4 py-4 text-gray-300">Scam Report</td>
+                <td class="px-4 py-4">
+                  <span class="text-green-400 font-bold">+150</span>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-800 hover:bg-opacity-20 transition-colors duration-300">
+                <td class="px-4 py-4">
+                  <span class="text-brand-cyan font-mono font-bold">#3152</span>
+                </td>
+                <td class="px-4 py-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-600 bg-opacity-15 backdrop-blur-sm text-green-400 border border-green-600 border-opacity-30">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    Validated
+                  </span>
+                </td>
+                <td class="px-4 py-4 text-gray-300">Contributor</td>
+                <td class="px-4 py-4">
+                  <span class="text-green-400 font-bold">+75</span>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-800 hover:bg-opacity-20 transition-colors duration-300">
+                <td class="px-4 py-4">
+                  <span class="text-brand-cyan font-mono font-bold">#3089</span>
+                </td>
+                <td class="px-4 py-4">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-600 bg-opacity-15 backdrop-blur-sm text-green-400 border border-green-600 border-opacity-30">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    Completed
+                  </span>
+                </td>
+                <td class="px-4 py-4 text-gray-300">Evidence Submission</td>
+                <td class="px-4 py-4">
+                  <span class="text-green-400 font-bold">+200</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Contributions Panel -->
+      <div class="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 border-opacity-50 mb-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-purple-500 bg-opacity-10 backdrop-blur-sm rounded-lg flex items-center justify-center mr-4 border border-purple-500 border-opacity-20">
+            <span class="text-2xl">🛠️</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">Contributions & Tools</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-gray-800 bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 hover:shadow-lg transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-brand-cyan bg-opacity-15 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-opacity-25 transition-all duration-300 border border-brand-cyan border-opacity-20">
+                <span class="text-brand-cyan text-xl font-bold">8</span>
+              </div>
+              <p class="text-sm text-gray-300 font-medium">Evidence Submitted</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 hover:shadow-lg transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-brand-cyan bg-opacity-15 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-opacity-25 transition-all duration-300 border border-brand-cyan border-opacity-20">
+                <span class="text-brand-cyan text-xl font-bold">12</span>
+              </div>
+              <p class="text-sm text-gray-300 font-medium">Bounties Participated</p>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 hover:shadow-lg transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-brand-cyan bg-opacity-15 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-opacity-25 transition-all duration-300 border border-brand-cyan border-opacity-20">
+                <span class="text-brand-cyan text-lg font-bold">4/10</span>
+              </div>
+              <p class="text-sm text-gray-300 font-medium">Tools Unlocked</p>
+              <div class="w-full h-2 bg-gray-600 bg-opacity-30 rounded-full mt-2 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-brand-cyan to-blue-500" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 hover:shadow-lg transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-brand-cyan bg-opacity-15 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-opacity-25 transition-all duration-300 border border-brand-cyan border-opacity-20">
+                <span class="text-brand-cyan text-xl font-bold">2</span>
+              </div>
+              <p class="text-sm text-gray-300 font-medium">Masterclasses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unlockables Panel -->
+      <div class="bg-gray-900 bg-opacity-30 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700 border-opacity-50" data-aos="fade-up" data-aos-delay="600">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-green-500 bg-opacity-10 backdrop-blur-sm rounded-lg flex items-center justify-center mr-4 border border-green-500 border-opacity-20">
+            <span class="text-2xl">🔓</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">Upcoming Unlocks</h2>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 transition-all duration-300">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-brand-cyan rounded-full mr-4 flex-shrink-0"></div>
+              <div class="flex-1">
+                <p class="text-white font-medium">Voting rights on civic upgrades</p>
+                <p class="text-sm text-gray-400">Unlock at 2,500 pts</p>
+                <div class="w-full h-2 bg-gray-700 bg-opacity-30 rounded-full mt-2 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-cyan to-blue-500" style="width: 61.6%"></div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">960 pts remaining</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 transition-all duration-300">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-brand-cyan rounded-full mr-4 flex-shrink-0"></div>
+              <div class="flex-1">
+                <p class="text-white font-medium">Access to AI-powered tracing tools</p>
+                <p class="text-sm text-gray-400">Unlock at 3,000 pts</p>
+                <div class="w-full h-2 bg-gray-700 bg-opacity-30 rounded-full mt-2 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-brand-cyan to-blue-500" style="width: 51.3%"></div>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">1,460 pts remaining</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-800 bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-gray-600 border-opacity-30 hover:border-brand-cyan hover:border-opacity-50 transition-all duration-300">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-brand-cyan rounded-full mr-4 flex-shrink-0"></div>
+              <div class="flex-1">
+                <p class="text-white font-medium">Exclusive mission invitations</p>
+                <p class="text-sm text-gray-400">From trusted partners</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 

@@ -14,24 +14,6 @@
       border-radius: 5px;
       padding: 8px;
     }
-    .submit-btn {
-      @apply cta-primary pulse-glow;
-      color: var(--accent-text);
-    }
-    input[type="file"] {
-      color: var(--light-text);
-      background: var(--dark-bg);
-      border: 1px solid var(--brand-cyan);
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      width: 100%;
-    }
-    label {
-      margin-bottom: 0.5rem;
-      display: block;
-      color: var(--light-text);
-    }
   </style>
 </head>
 <body class="bg-dark-bg text-light-text font-sans">
@@ -111,54 +93,366 @@
   <!-- Main Content -->
   <main class="main-content ml-64 py-16">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Submit a New Case</h1>
-      <p class="text-lg max-w-2xl mb-12" data-aos="fade-up" data-aos-delay="100">
-        Use the form below to open a case for investigation, project verification, or tip submission. Your submission is confidential and helps the TruthRise community fight scams and fraud.
-      </p>
-
-      <section class="max-w-2xl mx-auto mb-12">
-        <form id="caseForm" class="bg-gray-900 rounded-lg p-6 shadow-lg" enctype="multipart/form-data">
-          <input type="text" name="caseTitle" placeholder="Case Title" required
-            class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]" />
-
-          <select name="caseType" required
-            class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]">
-            <option value="">Select Case Type</option>
-            <option value="fraud">I was scammed</option>
-            <option value="verify">Verify a crypto/investment project</option>
-            <option value="mystery">Investigate a past financial mystery</option>
-          </select>
-
-          <textarea name="caseDetails" rows="5" required
-            placeholder="Tell us what happened. Include key details, names, dates, suspicious links, wallet addresses, or any patterns you noticed."
-            class="w-full p-3 mb-4 border rounded-lg bg-[var(--dark-bg)] text-[var(--light-text)] border-[var(--brand-cyan)]"></textarea>
-
-          <label for="evidenceUpload" class="mb-2">Attach Evidence (Optional):</label>
-          <input type="file" id="evidenceUpload" name="evidence[]" multiple />
-
-          <div class="flex items-center mt-4 mb-2">
-            <input type="checkbox" id="anonymous" name="anonymous" class="mr-2">
-            <label for="anonymous" class="mb-0">Submit as anonymous tip (we will not contact you)</label>
+      <!-- Multi-Step Submission Container -->
+      <!-- Step 0: Welcome and Start -->
+<section id="step-0" class="min-h-screen bg-black text-white flex flex-col items-center justify-start px-4 py-10 overflow-y-auto">
+        <div class="max-w-2xl w-full">
+          <!-- Logo -->
+          <div class="flex justify-center mb-8">
+            <img src="../assets/truthrise-logo-white.png" alt="TruthRise Logo" class="h-16 drop-shadow-lg">
           </div>
-
-          <div class="flex items-center mb-4">
-            <input type="checkbox" id="consent" name="consent" required class="mr-2">
-            <label for="consent" class="mb-0">I confirm this information is truthful and agree to TruthRise’s terms.</label>
+          <!-- Progress Bar -->
+          <div class="w-full bg-gray-800 h-2 rounded-full mb-8">
+            <div class="bg-cyan-400 h-2 rounded-full transition-all duration-500" style="width: 5%;"></div>
           </div>
-
-          <button type="submit" style="background:#1BBFDB;color:#fff;padding:12px 0;width:100%;border-radius:8px;font-weight:bold;">Submit Case</button>
-        </form>
-        <div id="case-success" class="hidden text-[var(--highlight-yellow)] mt-4">Case submitted! Thank you.</div>
+          <!-- Intro Headline -->
+          <h1 class="text-4xl font-bold text-center mb-5">Your Story Matters</h1>
+          <p class="text-lg text-gray-300 text-center mb-6">
+            This secure form helps us understand your case and prepare an expert response.<br>
+            Please take your time. The more details you provide, the stronger your case becomes.
+          </p>
+          <!-- Time Estimate -->
+          <p class="text-center text-base text-gray-400 mb-10">
+            ⏱️ Estimated Time: 30 to 45 minutes. Your answers can help stop a scammer.
+          </p>
+          <!-- Emergency Button -->
+          <div class="flex justify-center mb-6">
+            <button class="bg-red-600 hover:bg-red-500 text-white font-semibold px-3 py-2 rounded text-sm shadow-md">
+              🚨 It’s Urgent. I’m Being Scammed Right Now!
+            </button>
+          </div>
+          <!-- Start Button -->
+          <div class="flex justify-center">
+            <button class="bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold px-16 py-6 rounded-2xl text-3xl shadow-2xl border-4 border-cyan-300" style="z-index:9999; position: relative;">
+              Start Submission
+            </button>
+          </div>
+        </div>
       </section>
 
-      <!-- Quick Actions Section -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6" data-aos="fade-up">Quick Actions</h2>
-        <div class="flex flex-wrap gap-4">
-          <a href="dashboard.html" class="cta-outline" data-aos="fade-up" data-aos-delay="100">Go to Dashboard</a>
-          <a href="explore.html" class="cta-outline" data-aos="fade-up" data-aos-delay="200">Explore Open Cases</a>
-          <a href="shop.html" class="cta-outline" data-aos="fade-up" data-aos-delay="300">Visit Shop</a>
-          <a href="truth-bank.html" class="cta-outline" data-aos="fade-up" data-aos-delay="400">View Truth Bank</a>
+      <!-- Step 1: Your Information -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-1">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">About You</h2>
+            <form id="submission-form" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="name" class="block text-base font-semibold text-gray-200 mb-1">Full Name (or alias) <span class="text-red-400">*</span></label>
+                  <input type="text" id="name" name="name" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="John Doe or Alias">
+                </div>
+                <div>
+                  <label for="email" class="block text-base font-semibold text-gray-200 mb-1">Email Address <span class="text-gray-400 text-xs">(for contact & confirmation)</span></label>
+                  <input type="email" id="email" name="email" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="you@example.com">
+                </div>
+                <div>
+                  <label for="submit-for" class="block text-base font-semibold text-gray-200 mb-1">Are you submitting this for yourself or someone else?</label>
+                  <select id="submit-for" name="submit-for" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                    <option value="" disabled selected>Select one</option>
+                    <option value="self">Myself</option>
+                    <option value="other">Someone else</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-base font-semibold text-gray-200 mb-1">Do you want to remain anonymous to the public?</label>
+                  <div class="flex items-center space-x-6 mt-2">
+                    <label class="inline-flex items-center">
+                      <input type="radio" name="anonymous" value="yes" class="form-radio h-5 w-5 text-cyan-500" required>
+                      <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input type="radio" name="anonymous" value="no" class="form-radio h-5 w-5 text-cyan-500" required>
+                      <span class="ml-2">No</span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label for="country" class="block text-base font-semibold text-gray-200 mb-1">Country of Residence <span class="text-gray-400 text-xs">(optional but helpful)</span></label>
+                  <input type="text" id="country" name="country" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Country">
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" id="back-to-step-0" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200">
+                  ← Back
+                </button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">
+                  Next Step →
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: What Happened -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-2">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">💸 What Happened?</h2>
+            <form id="form-what-happened" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="scam-type" class="block text-base font-semibold text-gray-200 mb-1">Type of Scam <span class="text-red-400">*</span></label>
+                  <select id="scam-type" name="scam-type" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                    <option value="" disabled selected>Select type</option>
+                    <option value="investment">Investment Scam</option>
+                    <option value="romance">Romance Scam</option>
+                    <option value="phishing">Phishing</option>
+                    <option value="impersonation">Impersonation</option>
+                    <option value="crypto">Crypto Scam</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="text-xs text-gray-400 mt-1">Help: What kind of scam was this? <br>Tip: If you're not sure, pick the one that feels closest. We’ll help figure it out.</div>
+                </div>
+                <div>
+                  <label for="promised" class="block text-base font-semibold text-gray-200 mb-1">What were you told or promised?</label>
+                  <textarea id="promised" name="promised" rows="3" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Explain the story in your words..."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: What did they say to convince you? <br>Tip: Explain the story in your words. It’s okay if it’s not perfect.</div>
+                </div>
+                <div>
+                  <label for="when-start" class="block text-base font-semibold text-gray-200 mb-1">When did it start?</label>
+                  <input type="text" id="when-start" name="when-start" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. June 2023 or Last summer">
+                  <div class="text-xs text-gray-400 mt-1">Help: Roughly when did it begin? <br>Tip: Even an estimate helps — like ‘June 2023’ or ‘Last summer’.</div>
+                </div>
+                <div>
+                  <label for="amount-lost" class="block text-base font-semibold text-gray-200 mb-1">How much did you lose or invest?</label>
+                  <input type="text" id="amount-lost" name="amount-lost" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. $2,000 or 0.5 BTC">
+                  <div class="text-xs text-gray-400 mt-1">Help: How much money was involved? <br>Tip: Ballpark figures are okay — just be honest.</div>
+                </div>
+                <div>
+                  <label class="block text-base font-semibold text-gray-200 mb-1">Do you think they’re still active?</label>
+                  <div class="flex items-center space-x-6 mt-2">
+                    <label class="inline-flex items-center">
+                      <input type="radio" name="still-active" value="yes" class="form-radio h-5 w-5 text-cyan-500" required>
+                      <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                      <input type="radio" name="still-active" value="no" class="form-radio h-5 w-5 text-cyan-500" required>
+                      <span class="ml-2">No</span>
+                    </label>
+                  </div>
+                  <div class="text-xs text-gray-400 mt-1">Help: Is the scammer still contacting you or others? <br>Tip: This helps us decide how urgent your case is.</div>
+                </div>
+                <div>
+                  <label for="where-met" class="block text-base font-semibold text-gray-200 mb-1">Where did you meet them or see the ad?</label>
+                  <input type="text" id="where-met" name="where-met" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Instagram, email, WhatsApp, Facebook, Google ad, etc.">
+                  <div class="text-xs text-gray-400 mt-1">Help: What platform or website? <br>Tip: Like Instagram, email, WhatsApp, Facebook, Google ad, etc.</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3: What Evidence You Have -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-3">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🧾 Your Evidence</h2>
+            <form id="form-evidence" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="evidence-list" class="block text-base font-semibold text-gray-200 mb-1">List or describe your evidence <span class="text-red-400">*</span></label>
+                  <textarea id="evidence-list" name="evidence-list" rows="4" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Screenshots, emails, receipts, chat logs, etc."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: List or describe any evidence you have. <br>Tip: You can upload files in the next step.</div>
+                </div>
+                <div>
+                  <label for="evidence-where" class="block text-base font-semibold text-gray-200 mb-1">Where is this evidence stored?</label>
+                  <input type="text" id="evidence-where" name="evidence-where" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="On your phone, email, cloud, etc.">
+                  <div class="text-xs text-gray-400 mt-1">Help: Where can you access this evidence? <br>Tip: This helps us know how to request it if needed.</div>
+                </div>
+                <div>
+                  <label for="evidence-access" class="block text-base font-semibold text-gray-200 mb-1">Can you share this evidence with us?</label>
+                  <select id="evidence-access" name="evidence-access" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                    <option value="" disabled selected>Select one</option>
+                    <option value="yes">Yes, I can share now</option>
+                    <option value="later">I can share later</option>
+                    <option value="no">No, I cannot share</option>
+                  </select>
+                  <div class="text-xs text-gray-400 mt-1">Help: Can you upload or send this evidence? <br>Tip: If not now, you can do it later.</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 4: Upload Proof -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-4">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">📁 Upload Your Proof</h2>
+            <form id="form-upload-proof" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="proof-files" class="block text-base font-semibold text-gray-200 mb-1">Upload files or documents <span class="text-gray-400 text-xs">(screenshots, emails, receipts, etc.)</span></label>
+                  <input type="file" id="proof-files" name="proof-files" multiple class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" />
+                  <div class="text-xs text-gray-400 mt-1">Help: You can select multiple files. <br>Tip: If you have trouble uploading, you can email them later.</div>
+                </div>
+                <div>
+                  <label for="proof-notes" class="block text-base font-semibold text-gray-200 mb-1">Anything else about your files?</label>
+                  <textarea id="proof-notes" name="proof-notes" rows="3" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Describe any special details, passwords, or issues..."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: Any passwords, context, or issues with the files? <br>Tip: Let us know if you need help sharing certain files.</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 5: Who Did This -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-5">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🔍 Who Did This?</h2>
+            <form id="form-who-did-this" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="suspect-name" class="block text-base font-semibold text-gray-200 mb-1">Name or Alias <span class="text-gray-400 text-xs">(if known)</span></label>
+                  <input type="text" id="suspect-name" name="suspect-name" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Name, alias, or group name">
+                  <div class="text-xs text-gray-400 mt-1">Help: If you know the name, alias, or group, enter it here. <br>Tip: Leave blank if unknown.</div>
+                </div>
+                <div>
+                  <label for="suspect-contact" class="block text-base font-semibold text-gray-200 mb-1">Contact Details <span class="text-gray-400 text-xs">(email, phone, social, etc.)</span></label>
+                  <input type="text" id="suspect-contact" name="suspect-contact" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Email, phone, Telegram, etc.">
+                  <div class="text-xs text-gray-400 mt-1">Help: Any way to contact or identify them? <br>Tip: Social media, email, phone, etc.</div>
+                </div>
+                <div>
+                  <label for="suspect-details" class="block text-base font-semibold text-gray-200 mb-1">Other Details</label>
+                  <textarea id="suspect-details" name="suspect-details" rows="3" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Describe anything else you know about them..."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: Any other info? <br>Tip: Website, company, location, etc.</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 6: What You Want from Us -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-6">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🧠 What Do You Want from Us?</h2>
+            <form id="form-what-you-want" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="goal" class="block text-base font-semibold text-gray-200 mb-1">Your Goal <span class="text-red-400">*</span></label>
+                  <select id="goal" name="goal" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                    <option value="" disabled selected>Select your main goal</option>
+                    <option value="recover">Recover my funds</option>
+                    <option value="expose">Expose the scammer</option>
+                    <option value="warn">Warn others</option>
+                    <option value="advice">Get advice</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="text-xs text-gray-400 mt-1">Help: What do you hope to achieve? <br>Tip: Pick the closest match. You can explain more below.</div>
+                </div>
+                <div>
+                  <label for="goal-details" class="block text-base font-semibold text-gray-200 mb-1">Explain your goal (optional)</label>
+                  <textarea id="goal-details" name="goal-details" rows="3" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Describe what you want to happen, or any special requests..."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: Any details or special requests? <br>Tip: Be as specific as you like.</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 7: Optional Video Call Request -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-7">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">📞 Video Call Request (Optional)</h2>
+            <form id="form-video-call" class="space-y-6">
+              <div class="grid grid-cols-1 gap-5">
+                <div>
+                  <label class="block text-base font-semibold text-gray-200 mb-1">Would you like to request a video call with our team?</label>
+                  <label class="inline-flex items-center mt-2">
+                    <input type="checkbox" id="video-call-request" name="video-call-request" class="form-checkbox h-5 w-5 text-cyan-500 border-gray-300 rounded focus:ring-2 focus:ring-cyan-500">
+                    <span class="ml-2 text-gray-200">Yes, I would like to request a video call</span>
+                  </label>
+                  <div class="text-xs text-gray-400 mt-1">Help: This is optional. <br>Tip: We can arrange a call if you want to discuss your case in detail.</div>
+                </div>
+                <div>
+                  <label for="video-call-notes" class="block text-base font-semibold text-gray-200 mb-1">Anything specific you want to discuss? (optional)</label>
+                  <textarea id="video-call-notes" name="video-call-notes" rows="3" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Let us know your questions or concerns..."></textarea>
+                  <div class="text-xs text-gray-400 mt-1">Help: Any topics or questions for the call?</div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-8">
+                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
+                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 8: System Summary -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-8">
+        <div class="max-w-2xl w-full">
+          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-brand-cyan">🧿 Review & Submit</h2>
+            <p class="text-lg text-gray-300 mb-6">Please review your answers before submitting your case. You can go back to edit any step.</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 mb-6 text-left">
+              <p class="font-bold text-gray-200 mb-2">Case ID: <span id="case-id" class="text-brand-cyan">TR-XXXXXX</span></p>
+              <ul class="space-y-2 text-gray-300 text-base" id="review-summary">
+                <!-- Populated by JS -->
+              </ul>
+            </div>
+            <button type="button" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200" id="submit-case">Submit Case</button>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Submission Confirmation -->
+      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="submission-confirmation">
+        <div class="max-w-2xl w-full text-center">
+          <!-- Checkmark Icon -->
+          <div class="flex justify-center mb-6">
+            <svg class="w-16 h-16 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4 -4M2 12a10 10 0 1020 0a10 10 0 00-20 0z"></path>
+            </svg>
+          </div>
+          <!-- Confirmation Message -->
+          <h2 class="text-3xl font-bold mb-4">Submission Received</h2>
+          <p class="text-lg text-gray-300 mb-6">
+            Thank you for submitting your case. Our team will review the information and get back to you shortly.
+          </p>
+          <!-- Summary Review -->
+          <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 mb-6 text-left max-w-xl mx-auto">
+            <h3 class="text-xl font-semibold text-brand-cyan mb-2">Your Submission Summary</h3>
+            <ul class="space-y-2 text-gray-300 text-base" id="confirmation-summary">
+              <!-- Populated by JS -->
+            </ul>
+          </div>
+          <!-- Home Button -->
+          <div class="flex justify-center">
+            <a href="dashboard.html" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg focus:outline-none">
+              Back to Dashboard
+            </a>
+          </div>
         </div>
       </section>
     </div>
@@ -177,38 +471,198 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 800,
-          once: true
-        });
+        AOS.init({ duration: 800, once: true });
       }
-      
       // Check if user is logged in
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       if (!isLoggedIn) {
-        // Redirect to index if not logged in
         window.location.href = '/index.html';
         return;
       }
-      
-      // Enhanced sidebar toggle for mobile - handled in main.js
-      
       // Logout functionality
       const logoutBtn = document.getElementById('logout-btn');
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          
-          // Clear login state
           localStorage.removeItem('isLoggedIn');
           localStorage.removeItem('userEmail');
           localStorage.removeItem('userName');
           localStorage.removeItem('loginTime');
-          
-          // Redirect to index page
           window.location.href = '/index.html';
         });
       }
+
+      // Multi-Step Form Navigation (dynamic for all steps)
+      const stepSections = Array.from(document.querySelectorAll('main > div > section')).filter(s => s.id && s.id.startsWith('step-'));
+      const confirmationSection = document.getElementById('submission-confirmation');
+      let currentStep = 0;
+      // Store answers for review
+      const answers = {};
+
+      // Progress bar update
+      function updateProgressBar() {
+        const progressBar = document.querySelector('#step-0 .bg-cyan-400');
+        if (progressBar) {
+          const percent = Math.max(5, Math.round((currentStep / (stepSections.length - 1)) * 100));
+          progressBar.style.width = percent + '%';
+        }
+      }
+
+      // Show step by index
+      function showStep(idx) {
+        stepSections.forEach((s, i) => {
+          if (i === idx) s.classList.remove('hidden');
+          else s.classList.add('hidden');
+        });
+        confirmationSection.classList.add('hidden');
+        currentStep = idx;
+        updateProgressBar();
+        // If review step, populate summary
+        if (stepSections[idx].id === 'step-8') {
+          populateReviewSummary();
+        }
+      }
+
+      // Start button
+      const startBtn = document.querySelector('#step-0 button.bg-cyan-500');
+      if (startBtn) {
+        startBtn.addEventListener('click', function() {
+          showStep(1);
+        });
+      }
+
+      // Next/Back navigation for all steps
+      stepSections.forEach((section, idx) => {
+        // Next Step
+        const nextBtn = section.querySelector('button[type="submit"]');
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Save answers for review
+            const form = section.querySelector('form');
+            if (form) {
+              const formData = new FormData(form);
+              for (let [key, value] of formData.entries()) {
+                answers[key] = value;
+              }
+              // For checkboxes
+              form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                answers[cb.name] = cb.checked;
+              });
+            }
+            if (idx < stepSections.length - 1) {
+              showStep(idx + 1);
+            } else {
+              // Last step, show confirmation
+              stepSections[idx].classList.add('hidden');
+              confirmationSection.classList.remove('hidden');
+              populateConfirmationSummary();
+            }
+          });
+        }
+        // Back Button
+        const backBtn = section.querySelector('.back-btn');
+        if (backBtn) {
+          backBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (idx > 0) showStep(idx - 1);
+          });
+        }
+      });
+
+      // Populate review summary in Step 8
+      function populateReviewSummary() {
+        const reviewList = document.getElementById('review-summary');
+        if (!reviewList) return;
+        reviewList.innerHTML = '';
+        // Add all answers in a readable way
+        const fields = [
+          { label: 'Full Name / Alias', key: 'name' },
+          { label: 'Email', key: 'email' },
+          { label: 'Submitting for', key: 'submit-for' },
+          { label: 'Anonymous to public', key: 'anonymous' },
+          { label: 'Country', key: 'country' },
+          { label: 'Type of Scam', key: 'scam-type' },
+          { label: 'What was promised', key: 'promised' },
+          { label: 'When did it start', key: 'when-start' },
+          { label: 'Amount lost/invested', key: 'amount-lost' },
+          { label: 'Scammer still active', key: 'still-active' },
+          { label: 'Where met', key: 'where-met' },
+          { label: 'Evidence description', key: 'evidence-list' },
+          { label: 'Evidence location', key: 'evidence-where' },
+          { label: 'Can share evidence', key: 'evidence-access' },
+          { label: 'Proof notes', key: 'proof-notes' },
+          { label: 'Who did this (name)', key: 'suspect-name' },
+          { label: 'Who did this (contact)', key: 'suspect-contact' },
+          { label: 'Who did this (details)', key: 'suspect-details' },
+          { label: 'Your goal', key: 'goal' },
+          { label: 'Goal details', key: 'goal-details' },
+          { label: 'Video call requested', key: 'video-call-request' },
+          { label: 'Video call notes', key: 'video-call-notes' },
+        ];
+        fields.forEach(f => {
+          if (answers[f.key] !== undefined && answers[f.key] !== '') {
+            let value = answers[f.key];
+            if (typeof value === 'boolean') value = value ? 'Yes' : 'No';
+            const li = document.createElement('li');
+            li.innerHTML = `<span class=\"font-semibold text-gray-200\">${f.label}:</span> ${value}`;
+            reviewList.appendChild(li);
+          }
+        });
+      }
+
+      // Populate summary in confirmation screen
+      function populateConfirmationSummary() {
+        const confirmList = document.getElementById('confirmation-summary');
+        if (!confirmList) return;
+        confirmList.innerHTML = '';
+        const fields = [
+          { label: 'Full Name / Alias', key: 'name' },
+          { label: 'Email', key: 'email' },
+          { label: 'Submitting for', key: 'submit-for' },
+          { label: 'Anonymous to public', key: 'anonymous' },
+          { label: 'Country', key: 'country' },
+          { label: 'Type of Scam', key: 'scam-type' },
+          { label: 'What was promised', key: 'promised' },
+          { label: 'When did it start', key: 'when-start' },
+          { label: 'Amount lost/invested', key: 'amount-lost' },
+          { label: 'Scammer still active', key: 'still-active' },
+          { label: 'Where met', key: 'where-met' },
+          { label: 'Evidence description', key: 'evidence-list' },
+          { label: 'Evidence location', key: 'evidence-where' },
+          { label: 'Can share evidence', key: 'evidence-access' },
+          { label: 'Proof notes', key: 'proof-notes' },
+          { label: 'Who did this (name)', key: 'suspect-name' },
+          { label: 'Who did this (contact)', key: 'suspect-contact' },
+          { label: 'Who did this (details)', key: 'suspect-details' },
+          { label: 'Your goal', key: 'goal' },
+          { label: 'Goal details', key: 'goal-details' },
+          { label: 'Video call requested', key: 'video-call-request' },
+          { label: 'Video call notes', key: 'video-call-notes' },
+        ];
+        fields.forEach(f => {
+          if (answers[f.key] !== undefined && answers[f.key] !== '') {
+            let value = answers[f.key];
+            if (typeof value === 'boolean') value = value ? 'Yes' : 'No';
+            const li = document.createElement('li');
+            li.innerHTML = `<span class=\"font-semibold text-gray-200\">${f.label}:</span> ${value}`;
+            confirmList.appendChild(li);
+          }
+        });
+      }
+
+      // Submit Case button (final)
+      const submitCaseBtn = document.getElementById('submit-case');
+      if (submitCaseBtn) {
+        submitCaseBtn.addEventListener('click', function() {
+          stepSections[currentStep].classList.add('hidden');
+          confirmationSection.classList.remove('hidden');
+          populateConfirmationSummary();
+        });
+      }
+
+      // Show first step on load
+      showStep(0);
     });
   </script>
 </body>
