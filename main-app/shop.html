@@ -14,6 +14,31 @@
       border-radius: 5px;
       padding: 8px;
     }
+    .product-badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      z-index: 2;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    }
+    .glass-card {
+      background: rgba(24,36,48,0.32);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-radius: 1.2rem;
+      border: 1.5px solid rgba(34,211,238,0.18);
+      box-shadow: 0 4px 24px 0 rgba(34, 211, 238, 0.10), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .glass-card:focus-within, .glass-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(34, 211, 238, 0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
+      border-color: #06b6d4;
+    }
   </style>
 </head>
 <body class="bg-dark-bg text-light-text font-sans">
@@ -93,13 +118,39 @@
   <!-- Main Content -->
   <main class="main-content ml-64 py-16">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-8" data-aos="fade-up">Shop</h1>
-      <p class="text-lg max-w-2xl mb-12" data-aos="fade-up" data-aos-delay="100">
+      <h1 class="text-4xl font-bold mb-8">Shop</h1>
+      <p class="text-lg max-w-2xl mb-8">
         Browse and purchase items from the TruthRise shop.
       </p>
 
-      <!-- Shop Grid -->
-      <div id="shopGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 text-white"></div>
+      <!-- Modern Filter Buttons (non-functional) -->
+      <div class="mb-6 flex flex-wrap items-center gap-4">
+        <span class="text-sm font-semibold text-gray-300">Filter:</span>
+        <button class="filter-btn px-3 py-1 bg-gray-800 rounded-full text-sm text-white hover:bg-brand-cyan" data-filter="all">All</button>
+        <button class="filter-btn px-3 py-1 bg-gray-800 rounded-full text-sm text-white hover:bg-brand-cyan" data-filter="avatars">Avatars</button>
+        <button class="filter-btn px-3 py-1 bg-gray-800 rounded-full text-sm text-white hover:bg-brand-cyan" data-filter="badges">Badges</button>
+        <button class="filter-btn px-3 py-1 bg-gray-800 rounded-full text-sm text-white hover:bg-brand-cyan" data-filter="access">Access</button>
+        <button class="filter-btn px-3 py-1 bg-gray-800 rounded-full text-sm text-white hover:bg-brand-cyan" data-filter="services">Services</button>
+      </div>
+
+      <!-- Shop Categories -->
+      <div class="space-y-12">
+        <!-- Identity & Personalization -->
+        <section>
+          <h2 class="text-2xl font-bold mb-4 text-brand-cyan">Identity & Personalization</h2>
+          <div id="cat-identity" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-2 text-white"></div>
+        </section>
+        <!-- Access & Services -->
+        <section>
+          <h2 class="text-2xl font-bold mb-4 text-brand-cyan">Access & Services</h2>
+          <div id="cat-access" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-2 text-white"></div>
+        </section>
+        <!-- Recognition & Perks -->
+        <section>
+          <h2 class="text-2xl font-bold mb-4 text-brand-cyan">Recognition & Perks</h2>
+          <div id="cat-perks" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-2 text-white"></div>
+        </section>
+      </div>
 
       <!-- Product Modal -->
       <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
@@ -107,9 +158,16 @@
           <button class="absolute top-2 right-2 text-white text-xl" onclick="closeModal()">✖</button>
           <img id="modalImage" src="" alt="" class="w-full rounded mb-4" />
           <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
+          <div id="modalTags" class="flex flex-wrap gap-2 mb-2"></div>
           <p id="modalDescription" class="text-gray-300 mb-4"></p>
+          <div id="modalCivic" class="text-sm text-yellow-400 mb-2"></div>
+          <div id="modalInventory" class="text-xs text-gray-400 mb-4"></div>
           <p id="modalPrice" class="text-green-400 font-bold mb-4"></p>
-          <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Purchase with $TRUTH</button>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-2">Purchase with $TRUTH</button>
+          <div class="text-center mt-2">
+            <span class="text-gray-400 text-xs block mb-1">(Purchase confirmation coming soon)</span>
+            <a href="#" onclick="closeModal();return false;" class="text-cyan-400 underline text-sm">Back to Shop</a>
+          </div>
         </div>
       </div>
     </div>
@@ -127,113 +185,242 @@
   <script src="../assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, once: true });
-      }
+      // Animations disabled
       // Check if user is logged in
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       if (!isLoggedIn) {
-        // Redirect to index if not logged in
         window.location.href = '/index.html';
         return;
       }
-      // Enhanced sidebar toggle for mobile - handled in main.js
-      
       // Logout functionality
       const logoutBtn = document.getElementById('logout-btn');
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          // Clear login state
           localStorage.removeItem('isLoggedIn');
           localStorage.removeItem('userEmail');
           localStorage.removeItem('userName');
           localStorage.removeItem('loginTime');
-          // Redirect to index page
           window.location.href = '/index.html';
         });
       }
 
-      // Product data (expanded)
+      // Product data (with categories, tags, civic, inventory, new items)
+      // Add a 'type' property for filtering: avatars, badges, access, services
       const products = [
+        // Identity & Personalization
         {
           title: "Avatar Pack: Rebel Edition",
           image: "../assets/avatar1.png",
           description: "A pack of exclusive avatars representing whistleblowers, OSINT hunters, and TruthRise agents. Boost your identity across missions.",
-          price: "100 $TRUTH"
+          price: "100 $TRUTH",
+          category: "identity",
+          type: "avatars",
+          tags: ["NEW"],
+          civic: "+20 Reputation",
+          inventory: null
         },
         {
           title: "Custom Icon Set: Justice Flow",
           image: "../assets/iconpack.png",
           description: "Replace your dashboard icons with high-impact UI visuals modeled after hacker culture and crypto tracing.",
-          price: "120 $TRUTH"
-        },
-        {
-          title: "Contributor Badge: Silver Tier",
-          image: "../assets/silver-badge.png",
-          description: "Verified contributor badge displayed on your profile and submission history. Required for accessing high-trust tasks.",
-          price: "150 $TRUTH"
-        },
-        {
-          title: "1:1 Session with TruthRise Expert (1 hour)",
-          image: "../assets/expert-call.png",
-          description: "Private call with a TruthRise expert investigator or case builder. Ideal for strategy, blockchain tracing, or legal prep.",
-          price: "400 $TRUTH"
-        },
-        {
-          title: "VIP Seat: Private Roundtable Event",
-          image: "../assets/roundtable.png",
-          description: "Be part of an invite-only event with top-level contributors, victims, or investigators. Includes pre-event briefing and Q&A.",
-          price: "350 $TRUTH"
-        },
-        {
-          title: "Wall of Shame Spotlight (7 Days)",
-          image: "../assets/spotlight.png",
-          description: "Pin your case, story, or investigation to the top of the Wall of Shame. Gain maximum visibility and support.",
-          price: "250 $TRUTH"
+          price: "120 $TRUTH",
+          category: "identity",
+          type: "avatars",
+          tags: [],
+          civic: null,
+          inventory: null
         },
         {
           title: "Profile Background Pack: Dark Analyst Skins",
           image: "../assets/dark-backgrounds.png",
           description: "Unlock 3 rare background skins inspired by darknet UIs, cyber-forensics, and OSINT dashboards.",
-          price: "180 $TRUTH"
+          price: "180 $TRUTH",
+          category: "identity",
+          type: "avatars",
+          tags: [],
+          civic: null,
+          inventory: null
+        },
+        // New: Whistleblower Mask NFT
+        {
+          title: "Whistleblower Mask NFT",
+          image: "../assets/mask-nft.png",
+          description: "Digital mask for avatars. Limited edition — only 250 units. Unique blockchain asset for your TruthRise identity.",
+          price: "220 $TRUTH",
+          category: "identity",
+          type: "avatars",
+          tags: ["LIMITED"],
+          civic: "+50 Reputation",
+          inventory: "250 units left"
+        },
+        // New: Civic Role Tag Bundle
+        {
+          title: "Civic Role Tag Bundle",
+          image: "../assets/role-tags.png",
+          description: "Add \"Investigator\", \"Whistleblower\", or \"Supporter\" to your name. Show your civic role on your profile and submissions.",
+          price: "80 $TRUTH",
+          category: "identity",
+          type: "badges",
+          tags: ["NEW"],
+          civic: "+10 Reputation",
+          inventory: null
+        },
+        // New: TRUTHForce ID Card Generator
+        {
+          title: "TRUTHForce ID Card Generator",
+          image: "../assets/id-card.png",
+          description: "Download a printable ID badge with your contributor stats. Show your TruthRise status in the real world.",
+          price: "60 $TRUTH",
+          category: "identity",
+          type: "badges",
+          tags: [],
+          civic: null,
+          inventory: null
+        },
+
+        // Access & Services
+        {
+          title: "1:1 Session with TruthRise Expert (1 hour)",
+          image: "../assets/expert-call.png",
+          description: "Private call with a TruthRise expert investigator or case builder. Ideal for strategy, blockchain tracing, or legal prep.",
+          price: "400 $TRUTH",
+          category: "access",
+          type: "services",
+          tags: ["LIMITED"],
+          civic: "Unlocks Gold Mission Tiers",
+          inventory: "Only 10 sessions/month"
+        },
+        {
+          title: "VIP Seat: Private Roundtable Event",
+          image: "../assets/roundtable.png",
+          description: "Be part of an invite-only event with top-level contributors, victims, or investigators. Includes pre-event briefing and Q&A.",
+          price: "350 $TRUTH",
+          category: "access",
+          type: "services",
+          tags: [],
+          civic: null,
+          inventory: "Limited seats"
+        },
+
+        // Recognition & Perks
+        {
+          title: "Contributor Badge: Silver Tier",
+          image: "../assets/silver-badge.png",
+          description: "Verified contributor badge displayed on your profile and submission history. Required for accessing high-trust tasks.",
+          price: "150 $TRUTH",
+          category: "perks",
+          type: "badges",
+          tags: [],
+          civic: "Required for high-trust tasks",
+          inventory: null
         },
         {
           title: "Elite Contributor Access: Gold Tier",
           image: "../assets/gold-access.png",
           description: "Includes early bounty previews, premium task invites, and gold-tier missions. Must hold the Silver Badge first.",
-          price: "1,000 $TRUTH"
+          price: "1,000 $TRUTH",
+          category: "perks",
+          type: "access",
+          tags: ["NEW"],
+          civic: "Unlocks Gold Missions",
+          inventory: null
+        },
+        {
+          title: "Wall of Shame Spotlight (7 Days)",
+          image: "../assets/spotlight.png",
+          description: "Pin your case, story, or investigation to the top of the Wall of Shame. Gain maximum visibility and support.",
+          price: "250 $TRUTH",
+          category: "perks",
+          type: "access",
+          tags: ["LIMITED"],
+          civic: "+30 Reputation",
+          inventory: "Limited to 5 per week"
         }
       ];
 
-      // Render shop grid
-      const grid = document.getElementById('shopGrid');
-      products.forEach((product, index) => {
-        const card = document.createElement('div');
-        card.className = 'bg-gray-900 rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer flex flex-col h-80 relative';
-        card.setAttribute('data-aos', 'fade-up');
-        card.setAttribute('data-aos-delay', String(200 + index * 100));
-        card.innerHTML = `
-          <div class="flex-shrink-0 flex items-center justify-center h-32 w-full mb-3 bg-gray-800 rounded-lg">
-            <img src="${product.image}" alt="${product.title}" class="object-contain h-24 w-24" onerror="this.src='https://placehold.co/96x96/1bbfdb/23272b?text=Product'" />
-          </div>
-          <h3 class="text-xl font-bold">${product.title}</h3>
-          <p class="text-sm text-gray-400 mt-1 mb-2">${product.description.slice(0, 70)}...</p>
-          <div class="absolute bottom-4 right-4 flex items-center gap-1">
-            <span class="text-xs text-gray-400 font-semibold">Price:</span>
-            <span class="text-sm font-semibold text-green-400">${product.price}</span>
-          </div>
-        `;
-        card.onclick = () => openModal(index);
-        grid.appendChild(card);
+      // Render shop by category
+      const categories = {
+        identity: document.getElementById('cat-identity'),
+        access: document.getElementById('cat-access'),
+        perks: document.getElementById('cat-perks')
+      };
+      Object.values(categories).forEach(cat => cat.innerHTML = '');
+      function renderProducts(filterType = 'all') {
+        Object.values(categories).forEach(cat => cat.innerHTML = '');
+        let filtered = products;
+        if (filterType && filterType !== 'all') {
+          filtered = products.filter(p => p.type === filterType);
+        }
+        filtered.forEach((product, index) => {
+          const card = document.createElement('div');
+          card.className = 'glass-card p-4 shadow hover:shadow-lg transition cursor-pointer flex flex-col h-80 relative';
+          // Badge
+          let badgeHtml = '';
+          if (product.tags && product.tags.length > 0) {
+            badgeHtml = `<span class="product-badge bg-yellow-500 text-black">${product.tags[0]}</span>`;
+          }
+          // Inventory/limited
+          let inventoryHtml = '';
+          if (product.inventory) {
+            inventoryHtml = `<span class="absolute top-2 left-2 bg-gray-700 text-xs px-2 py-0.5 rounded-full">${product.inventory}</span>`;
+          }
+          // Civic value
+          let civicHtml = '';
+          if (product.civic) {
+            civicHtml = `<span class="absolute bottom-4 left-4 text-yellow-400 text-xs font-semibold">${product.civic}</span>`;
+          }
+          card.innerHTML = `
+            ${badgeHtml}
+            ${inventoryHtml}
+            <div class="flex-shrink-0 flex items-center justify-center h-32 w-full mb-3 bg-gray-800 rounded-lg">
+              <img src="${product.image}" alt="${product.title}" class="object-contain h-24 w-24" onerror="this.src='https://placehold.co/96x96/1bbfdb/23272b?text=Product'" />
+            </div>
+            <h3 class="text-xl font-bold">${product.title}</h3>
+            <p class="text-sm text-gray-400 mt-1 mb-2">${product.description.slice(0, 70)}...</p>
+            <div class="absolute bottom-4 right-4 flex items-center gap-1">
+              <span class="text-xs text-gray-400 font-semibold">Price:</span>
+              <span class="text-sm font-semibold text-green-400">${product.price}</span>
+            </div>
+            ${civicHtml}
+          `;
+          card.onclick = () => openModal(products.indexOf(product));
+          categories[product.category].appendChild(card);
+        });
+      }
+      renderProducts();
+
+      // Filter button logic
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-brand-cyan', 'text-black'));
+          this.classList.add('bg-brand-cyan', 'text-black');
+          renderProducts(this.dataset.filter);
+        });
       });
 
+      // Modal logic
       window.openModal = function(index) {
         const product = products[index];
         document.getElementById('modalImage').src = product.image;
         document.getElementById('modalTitle').textContent = product.title;
         document.getElementById('modalDescription').textContent = product.description;
         document.getElementById('modalPrice').textContent = product.price;
+        // Tags
+        const tagsDiv = document.getElementById('modalTags');
+        tagsDiv.innerHTML = '';
+        if (product.tags && product.tags.length > 0) {
+          product.tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'bg-yellow-500 text-black px-2 py-0.5 rounded-full text-xs font-bold';
+            span.textContent = tag;
+            tagsDiv.appendChild(span);
+          });
+        }
+        // Civic value
+        document.getElementById('modalCivic').textContent = product.civic ? `🔥 ${product.civic}` : '';
+        // Inventory
+        document.getElementById('modalInventory').textContent = product.inventory ? `Inventory: ${product.inventory}` : '';
         document.getElementById('productModal').classList.remove('hidden');
       };
       window.closeModal = function() {

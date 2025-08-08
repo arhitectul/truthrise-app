@@ -14,6 +14,46 @@
       border-radius: 5px;
       padding: 8px;
     }
+    .glass-card {
+      background: rgba(24, 36, 48, 0.7);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      box-shadow: 0 4px 24px 0 rgba(34, 211, 238, 0.10), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+      border-radius: 1.2rem;
+      border: 1.5px solid #22d3ee;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .glass-card:focus-within, .glass-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(34, 211, 238, 0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
+      border-color: #06b6d4;
+    }
+    @media (max-width: 1024px) {
+      .glass-card { margin-bottom: 1.5rem; }
+    }
+    html, body {
+      height: 100%;
+      min-height: 100%;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main.main-content {
+      flex: 1 0 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    footer {
+      flex-shrink: 0;
+    }
+    @media (min-width: 1024px) {
+      .main-content {
+        min-height: calc(100vh - 56px); /* 56px = footer height */
+      }
+    }
   </style>
 </head>
 <body class="bg-dark-bg text-light-text font-sans">
@@ -95,7 +135,7 @@
     <div class="container mx-auto px-4">
       <!-- Multi-Step Submission Container -->
       <!-- Step 0: Welcome and Start -->
-<section id="step-0" class="min-h-screen bg-black text-white flex flex-col items-center justify-start px-4 py-10 overflow-y-auto">
+<section id="step-0" class="flex-1 bg-black text-white flex flex-col items-center justify-start px-4 py-4 overflow-y-auto">
         <div class="max-w-2xl w-full">
           <!-- Logo -->
           <div class="flex justify-center mb-8">
@@ -131,29 +171,29 @@
       </section>
 
       <!-- Step 1: Your Information -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-1">
-        <div class="max-w-2xl w-full">
-          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">About You</h2>
-            <form id="submission-form" class="space-y-6">
-              <div class="grid grid-cols-1 gap-5">
-                <div>
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-2 py-2" id="step-1">
+        <div class="max-w-6xl w-full h-full flex flex-col justify-center items-center">
+          <form id="submission-form" class="w-full h-full flex flex-col justify-between">
+            <div class="grid grid-cols-12 gap-4 w-full h-full items-stretch">
+              <!-- About You Cards (no exterior border, smaller) -->
+              <div class="col-span-4 flex flex-col gap-3">
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="name" class="block text-base font-semibold text-gray-200 mb-1">Full Name (or alias) <span class="text-red-400">*</span></label>
-                  <input type="text" id="name" name="name" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="John Doe or Alias">
+                  <input type="text" id="name" name="name" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="John Doe or Alias">
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="email" class="block text-base font-semibold text-gray-200 mb-1">Email Address <span class="text-gray-400 text-xs">(for contact & confirmation)</span></label>
-                  <input type="email" id="email" name="email" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="you@example.com">
+                  <input type="email" id="email" name="email" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="you@example.com">
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="submit-for" class="block text-base font-semibold text-gray-200 mb-1">Are you submitting this for yourself or someone else?</label>
-                  <select id="submit-for" name="submit-for" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                  <select id="submit-for" name="submit-for" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
                     <option value="" disabled selected>Select one</option>
                     <option value="self">Myself</option>
                     <option value="other">Someone else</option>
                   </select>
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label class="block text-base font-semibold text-gray-200 mb-1">Do you want to remain anonymous to the public?</label>
                   <div class="flex items-center space-x-6 mt-2">
                     <label class="inline-flex items-center">
@@ -166,34 +206,16 @@
                     </label>
                   </div>
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="country" class="block text-base font-semibold text-gray-200 mb-1">Country of Residence <span class="text-gray-400 text-xs">(optional but helpful)</span></label>
-                  <input type="text" id="country" name="country" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Country">
+                  <input type="text" id="country" name="country" class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Country">
                 </div>
               </div>
-              <div class="flex justify-between items-center mt-8">
-                <button type="button" id="back-to-step-0" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200">
-                  ← Back
-                </button>
-                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">
-                  Next Step →
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- Step 2: What Happened -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-2">
-        <div class="max-w-2xl w-full">
-          <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">💸 What Happened?</h2>
-            <form id="form-what-happened" class="space-y-6">
-              <div class="grid grid-cols-1 gap-5">
-                <div>
+              <!-- What Happened Cards (no exterior border, smaller) -->
+              <div class="col-span-8 flex flex-col gap-3">
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="scam-type" class="block text-base font-semibold text-gray-200 mb-1">Type of Scam <span class="text-red-400">*</span></label>
-                  <select id="scam-type" name="scam-type" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
+                  <select id="scam-type" name="scam-type" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg">
                     <option value="" disabled selected>Select type</option>
                     <option value="investment">Investment Scam</option>
                     <option value="romance">Romance Scam</option>
@@ -202,24 +224,20 @@
                     <option value="crypto">Crypto Scam</option>
                     <option value="other">Other</option>
                   </select>
-                  <div class="text-xs text-gray-400 mt-1">Help: What kind of scam was this? <br>Tip: If you're not sure, pick the one that feels closest. We’ll help figure it out.</div>
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="promised" class="block text-base font-semibold text-gray-200 mb-1">What were you told or promised?</label>
-                  <textarea id="promised" name="promised" rows="3" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Explain the story in your words..."></textarea>
-                  <div class="text-xs text-gray-400 mt-1">Help: What did they say to convince you? <br>Tip: Explain the story in your words. It’s okay if it’s not perfect.</div>
+                  <textarea id="promised" name="promised" rows="3" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Explain the story in your words..."></textarea>
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="when-start" class="block text-base font-semibold text-gray-200 mb-1">When did it start?</label>
-                  <input type="text" id="when-start" name="when-start" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. June 2023 or Last summer">
-                  <div class="text-xs text-gray-400 mt-1">Help: Roughly when did it begin? <br>Tip: Even an estimate helps — like ‘June 2023’ or ‘Last summer’.</div>
+                  <input type="text" id="when-start" name="when-start" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. June 2023 or Last summer">
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="amount-lost" class="block text-base font-semibold text-gray-200 mb-1">How much did you lose or invest?</label>
-                  <input type="text" id="amount-lost" name="amount-lost" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. $2,000 or 0.5 BTC">
-                  <div class="text-xs text-gray-400 mt-1">Help: How much money was involved? <br>Tip: Ballpark figures are okay — just be honest.</div>
+                  <input type="text" id="amount-lost" name="amount-lost" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="e.g. $2,000 or 0.5 BTC">
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label class="block text-base font-semibold text-gray-200 mb-1">Do you think they’re still active?</label>
                   <div class="flex items-center space-x-6 mt-2">
                     <label class="inline-flex items-center">
@@ -231,28 +249,33 @@
                       <span class="ml-2">No</span>
                     </label>
                   </div>
-                  <div class="text-xs text-gray-400 mt-1">Help: Is the scammer still contacting you or others? <br>Tip: This helps us decide how urgent your case is.</div>
                 </div>
-                <div>
+                <div class="glass-card p-3 bg-opacity-80" style="background:rgba(24,36,48,0.25);">
                   <label for="where-met" class="block text-base font-semibold text-gray-200 mb-1">Where did you meet them or see the ad?</label>
-                  <input type="text" id="where-met" name="where-met" required class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Instagram, email, WhatsApp, Facebook, Google ad, etc.">
-                  <div class="text-xs text-gray-400 mt-1">Help: What platform or website? <br>Tip: Like Instagram, email, WhatsApp, Facebook, Google ad, etc.</div>
+                  <input type="text" id="where-met" name="where-met" required class="w-full p-3 bg-gray-800 bg-opacity-70 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg" placeholder="Instagram, email, WhatsApp, Facebook, Google ad, etc.">
                 </div>
               </div>
-              <div class="flex justify-between items-center mt-8">
-                <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200 back-btn">← Back</button>
-                <button type="submit" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-lg shadow-lg focus:outline-none transition-all duration-200">Next Step →</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <!-- Actions always visible at bottom -->
+            <div class="flex justify-between items-center w-full mt-4">
+              <button type="button" id="back-to-step-0" class="px-5 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-semibold shadow focus:outline-none transition-all duration-200">
+                ← Back
+              </button>
+              <button type="submit" class="px-7 py-2 bg-cyan-500 hover:bg-cyan-400 text-white font-extrabold rounded-xl text-base shadow-lg focus:outline-none transition-all duration-200">
+                Next Step →
+              </button>
+            </div>
+          </form>
         </div>
       </section>
 
+      <!-- Step 2: What Happened -->
+
       <!-- Step 3: What Evidence You Have -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-3">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-3">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🧾 Your Evidence</h2>
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan"> Your Evidence</h2>
             <form id="form-evidence" class="space-y-6">
               <div class="grid grid-cols-1 gap-5">
                 <div>
@@ -286,10 +309,10 @@
       </section>
 
       <!-- Step 4: Upload Proof -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-4">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-4">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">📁 Upload Your Proof</h2>
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">Upload Your Proof</h2>
             <form id="form-upload-proof" class="space-y-6">
               <div class="grid grid-cols-1 gap-5">
                 <div>
@@ -313,10 +336,10 @@
       </section>
 
       <!-- Step 5: Who Did This -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-5">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-5">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🔍 Who Did This?</h2>
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan"> Who Did This?</h2>
             <form id="form-who-did-this" class="space-y-6">
               <div class="grid grid-cols-1 gap-5">
                 <div>
@@ -345,10 +368,10 @@
       </section>
 
       <!-- Step 6: What You Want from Us -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-6">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-6">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">🧠 What Do You Want from Us?</h2>
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan"> What Do You Want from Us?</h2>
             <form id="form-what-you-want" class="space-y-6">
               <div class="grid grid-cols-1 gap-5">
                 <div>
@@ -379,10 +402,10 @@
       </section>
 
       <!-- Step 7: Optional Video Call Request -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-7">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-7">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10">
-            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan">📞 Video Call Request (Optional)</h2>
+            <h2 class="text-4xl font-extrabold text-center mb-2 text-brand-cyan"> Video Call Request (Optional)</h2>
             <form id="form-video-call" class="space-y-6">
               <div class="grid grid-cols-1 gap-5">
                 <div>
@@ -409,7 +432,7 @@
       </section>
 
       <!-- Step 8: System Summary -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="step-8">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="step-8">
         <div class="max-w-2xl w-full">
           <div class="bg-gray-900 bg-opacity-90 rounded-2xl shadow-2xl px-8 py-10 text-center">
             <h2 class="text-4xl font-extrabold mb-4 text-brand-cyan">🧿 Review & Submit</h2>
@@ -427,7 +450,7 @@
 
 
       <!-- Submission Confirmation -->
-      <section class="hidden min-h-screen bg-black text-white flex items-center justify-center px-4 py-10" id="submission-confirmation">
+      <section class="hidden flex-1 bg-black text-white flex items-center justify-center px-4 py-4" id="submission-confirmation">
         <div class="max-w-2xl w-full text-center">
           <!-- Checkmark Icon -->
           <div class="flex justify-center mb-6">
