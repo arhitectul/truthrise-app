@@ -512,9 +512,7 @@
   <!-- Main Content - Ready for new homepage sections -->
   <main>
     <!-- Hero Section with Rotating Globe -->
-    <section class="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center overflow-hidden">
-      <!-- Background gradient effect -->
-      <div class="absolute inset-0 bg-gradient-radial from-[#23D2EE]/10 via-transparent to-black"></div>
+    <section class="relative min-h-screen bg-gray-900 flex items-center justify-center overflow-hidden">
       
       <!-- Floating particles animation -->
       <div class="absolute inset-0 opacity-20">
@@ -574,10 +572,91 @@
       </div>
     </section>
 
+    <!-- How It Works Preview Section -->
+    <section class="py-20 bg-black">
+      <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-6" data-aos="fade-up">
+            <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
+              How TruthRise Works
+            </span>
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            From your first click to real-world results, a clear, safe, and community-powered process designed to protect you and make your voice count.
+          </p>
+        </div>
+
+        <!-- Steps Grid (3 Steps for Homepage Preview) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <!-- Step 1 - Report -->
+          <div class="relative p-8 rounded-2xl text-center bg-white/5 border border-[#23D2EE]/30 hover:border-[#23D2EE] hover:shadow-2xl hover:shadow-[#23D2EE]/20 transition-all duration-300 hover:-translate-y-2 backdrop-blur-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <!-- Background glow effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#23D2EE]/5 via-blue-500/5 to-[#23D2EE]/5 rounded-2xl"></div>
+            <div class="relative z-10">
+              <div class="text-5xl font-black mb-4 bg-gradient-to-r from-[#23D2EE] to-blue-400 bg-clip-text text-transparent">01</div>
+              <h3 class="text-2xl font-bold text-white mb-4">Report</h3>
+              <div class="space-y-3 text-gray-300">
+                <p>• Share your case in a secure form</p>
+                <p>• Choose how much to reveal</p>
+                <p>• Remain anonymous if desired</p>
+                <p>• No personal data made public without consent</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 - Verify -->
+          <div class="relative p-8 rounded-2xl text-center bg-white/5 border border-[#23D2EE]/30 hover:border-[#23D2EE] hover:shadow-2xl hover:shadow-[#23D2EE]/20 transition-all duration-300 hover:-translate-y-2 backdrop-blur-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <!-- Background glow effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#23D2EE]/5 via-blue-500/5 to-[#23D2EE]/5 rounded-2xl"></div>
+            <div class="relative z-10">
+              <div class="text-5xl font-black mb-4 bg-gradient-to-r from-[#23D2EE] to-blue-400 bg-clip-text text-transparent">02</div>
+              <h3 class="text-2xl font-bold text-white mb-4">Verification</h3>
+              <div class="space-y-3 text-gray-300">
+                <p>• Trusted team reviews your information</p>
+                <p>• Community helps verify details</p>
+                <p>• Prevents false reports</p>
+                <p>• Protects platform integrity</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 - Collaborate -->
+          <div class="relative p-8 rounded-2xl text-center bg-white/5 border border-[#23D2EE]/30 hover:border-[#23D2EE] hover:shadow-2xl hover:shadow-[#23D2EE]/20 transition-all duration-300 hover:-translate-y-2 backdrop-blur-md overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <!-- Background glow effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#23D2EE]/5 via-blue-500/5 to-[#23D2EE]/5 rounded-2xl"></div>
+            <div class="relative z-10">
+              <div class="text-5xl font-black mb-4 bg-gradient-to-r from-[#23D2EE] to-blue-400 bg-clip-text text-transparent">03</div>
+              <h3 class="text-2xl font-bold text-white mb-4">Collaboration</h3>
+              <div class="space-y-3 text-gray-300">
+                <p>• Others with similar cases join forces</p>
+                <p>• Community adds evidence</p>
+                <p>• Track scammer patterns</p>
+                <p>• Build stronger cases together</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+          <div class="space-y-6">
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+              Ready to see the complete process and learn about our European compliance?
+            </p>
+            <a href="Pages/how-it-works.html" class="inline-flex items-center gap-3 bg-[#23D2EE] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              View Complete Process
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Why Trust TruthRise Section -->
-    <section class="bg-gradient-to-b from-black via-gray-950 to-black py-28 px-6 text-white relative">
-      <!-- Smooth transition overlay from hero -->
-      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/50 to-transparent"></div>
+    <section class="bg-black py-28 px-6 text-white relative">
       
       <div class="max-w-7xl mx-auto text-center mb-20 relative z-10">
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">
@@ -668,17 +747,7 @@
     </section>
 
     <!-- Anonymous Tip Section -->
-    <section class="bg-gradient-to-br from-gray-900 via-black to-gray-900 py-28 px-6 text-white relative overflow-hidden">
-      <!-- Smooth transition overlay from previous section -->
-      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
-      
-      <!-- Background pattern -->
-      <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-10 left-10 w-20 h-20 border border-[#23D2EE] rounded-full"></div>
-        <div class="absolute top-32 right-20 w-16 h-16 border border-[#23D2EE] rounded-full"></div>
-        <div class="absolute bottom-20 left-32 w-12 h-12 border border-[#23D2EE] rounded-full"></div>
-        <div class="absolute bottom-40 right-10 w-24 h-24 border border-[#23D2EE] rounded-full"></div>
-      </div>
+    <section class="bg-black py-28 px-6 text-white relative overflow-hidden">
 
       <div class="max-w-7xl mx-auto text-center relative z-10">
         <!-- Badge -->
@@ -807,9 +876,7 @@
     </section>
 
     <!-- Video Section: AI Scammers vs. TruthRise -->
-    <section class="relative py-28 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
-      <!-- Smooth transition overlay from previous section -->
-      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/50 to-transparent"></div>
+    <section class="relative py-28 bg-black text-white overflow-hidden">
       
       <div class="container mx-auto px-6 text-center relative z-10">
         <!-- Badge -->
@@ -904,16 +971,11 @@
           </a>
         </div>
       </div>
-      
-      <!-- Smooth transition to footer -->
-      <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-black"></div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-b from-black via-gray-950 to-black text-white py-16 relative">
-    <!-- Smooth transition overlay from previous section -->
-    <div class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-black to-transparent"></div>
+  <footer class="bg-black text-white py-16 relative">
     
     <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 relative z-10">
       <div class="md:col-span-1 lg:col-span-1">
@@ -926,7 +988,7 @@
       <div>
         <h3 class="text-lg font-bold mb-6 text-white">Platform</h3>
         <div class="space-y-3">
-          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">How It Works</a>
+          <a href="Pages/how-it-works.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">How It Works</a>
           <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Success Stories</a>
           <a href="main-app/wall-of-shame.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Wall of Shame</a>
           <a href="main-app/truth-bank.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">TRUTH Bank</a>
