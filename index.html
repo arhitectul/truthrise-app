@@ -1282,25 +1282,26 @@
         maybeLaterBtn: !!maybeLaterBtn
       });
       
-      // TEMPORARY: Clear any existing session data for testing
-      // Remove this line after confirming popup works
+      // FORCE TEST: Clear any existing session data and show popup immediately
       sessionStorage.removeItem('xPopupShown');
+      console.log('SessionStorage cleared');
       
-      // Check if popup has been shown this session
-      const hasShownXPopup = sessionStorage.getItem('xPopupShown');
-      console.log('Has shown X popup this session:', hasShownXPopup);
-      
-      if (!hasShownXPopup && xFollowModal) {
-        console.log('Scheduling popup to show in 8 seconds...');
+      if (xFollowModal) {
+        console.log('Modal found, scheduling popup in 3 seconds for testing...');
         // Show popup after a delay
         setTimeout(() => {
-          console.log('8 seconds elapsed, showing X popup now...');
-          document.getElementById('x-follow-modal').classList.remove('hidden');
+          console.log('3 seconds elapsed, showing X popup now...');
+          console.log('Modal element:', xFollowModal);
+          console.log('Modal classes before:', xFollowModal.className);
+          
+          xFollowModal.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
-          console.log('Popup should now be visible');
-        }, 8000); // Show after 8 seconds
+          
+          console.log('Modal classes after:', xFollowModal.className);
+          console.log('POPUP SHOULD BE VISIBLE NOW!');
+        }, 3000); // Reduced to 3 seconds for immediate testing
       } else {
-        console.log('X popup already shown this session or modal not found');
+        console.error('X popup modal not found!');
       }
       
       // Close modal function
@@ -1365,10 +1366,14 @@
       
       // Debug function to manually show popup (for testing)
       window.showXPopup = function() {
-        sessionStorage.removeItem('xPopupShown');
+        console.log('Manual showXPopup triggered');
         if (xFollowModal) {
+          sessionStorage.removeItem('xPopupShown');
           xFollowModal.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
+          console.log('Popup manually shown');
+        } else {
+          console.error('Modal not found!');
         }
       };
       
@@ -1376,6 +1381,18 @@
       window.closeXPopup = function() {
         closeXFollowModal();
       };
+      
+      // IMMEDIATE TEST: Show popup right now (remove this after testing)
+      window.testPopupNow = function() {
+        console.log('Testing popup immediately...');
+        if (xFollowModal) {
+          xFollowModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          console.log('Test popup shown immediately');
+        }
+      };
+      
+      console.log('Debug functions available: showXPopup(), closeXPopup(), testPopupNow()');
     });
   </script>
 </body>
