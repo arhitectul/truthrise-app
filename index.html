@@ -11,9 +11,7 @@
 
   <!-- Tailwind CSS CDN for demo -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS for animations -->
-  <link href="assets/css/aos.css" rel="stylesheet">
-  <script src="assets/js/aos.js"></script>
+  <!-- AOS animations removed -->
   <!-- Custom styles -->
   <link href="assets/css/styles.css" rel="stylesheet">
   
@@ -297,6 +295,46 @@
         height: 10rem; /* h-40 equivalent */
       }
     }
+
+    /* Card Glow Effects */
+    .card-glow {
+      position: relative;
+      box-shadow: 
+        0 0 20px rgba(35, 210, 238, 0.05),
+        inset 0 1px 0 rgba(35, 210, 238, 0.1);
+    }
+
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 0.75rem;
+      padding: 1px;
+      background: linear-gradient(135deg, 
+        rgba(35, 210, 238, 0.2), 
+        rgba(35, 210, 238, 0.05), 
+        rgba(35, 210, 238, 0.2));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-glow:hover::before {
+      opacity: 1;
+    }
+
+    .card-glow:hover {
+      box-shadow: 
+        0 0 30px rgba(35, 210, 238, 0.15),
+        0 0 60px rgba(35, 210, 238, 0.05),
+        inset 0 1px 0 rgba(35, 210, 238, 0.2);
+    }
   </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-white">
@@ -308,11 +346,11 @@
   
   <!-- Navigation -->
   <nav class="sticky top-0 nav-backdrop shadow-lg z-50 border-b border-[#23D2EE]/20">
-    <div class="container mx-auto px-4 py-3">
+    <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <!-- Logo -->
         <div class="flex items-center space-x-3">
-          <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-8 w-auto sm:h-10" data-aos="fade-right" data-aos-delay="200">
+          <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-8 w-auto sm:h-10">
           <a href="#" class="text-xl sm:text-2xl font-bold text-[#23D2EE] flex items-center gap-2">
             <span class="hidden sm:inline">TruthRise</span>
             <span class="sm:hidden">TR</span>
@@ -320,9 +358,9 @@
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex md:items-center md:space-x-6">
+        <div class="hidden md:flex md:items-center md:space-x-8">
           <a href="#" id="login-btn" class="text-white hover:text-[#23D2EE] transition-colors duration-200 font-medium">Login</a>
-          <a href="truthrise-onboarding/src/constitution.html" id="onboarding-btn" class="bg-[#23D2EE] text-black font-semibold px-6 py-2 rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg">
+          <a href="truthrise-onboarding/src/constitution.html" id="onboarding-btn" class="bg-[#23D2EE] text-black font-semibold px-8 py-3 rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg">
             Start Onboarding
           </a>
         </div>
@@ -338,27 +376,27 @@
 
       <!-- Mobile Navigation Menu -->
       <div id="menu" class="mobile-nav-menu md:hidden">
-        <div class="px-4 py-6 space-y-4">
+        <div class="px-6 py-8 space-y-6">
           <a href="#" id="mobile-login-btn" class="mobile-nav-link block text-white hover:text-[#23D2EE] py-3 px-4 font-medium">
             <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
             </svg>
             Login
           </a>
-          <a href="truthrise-onboarding/src/constitution.html" id="mobile-onboarding-btn" class="mobile-nav-link block bg-[#23D2EE] text-black font-semibold py-3 px-4 rounded-lg text-center shadow-lg">
+          <a href="truthrise-onboarding/src/constitution.html" id="mobile-onboarding-btn" class="mobile-nav-link block bg-[#23D2EE] text-black font-semibold py-4 px-6 rounded-lg text-center shadow-lg">
             <svg class="w-5 h-5 inline mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
             Start Your Journey
           </a>
-          <div class="border-t border-[#23D2EE]/30 pt-4 mt-4">
-            <a href="main-app/case-list.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+          <div class="border-t border-[#23D2EE]/30 pt-6 mt-6">
+            <a href="main-app/case-list.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-3 px-4 text-sm">
               📋 View Cases
             </a>
-            <a href="main-app/truth-bank.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+            <a href="main-app/truth-bank.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-3 px-4 text-sm">
               🏦 TRUTH Bank
             </a>
-            <a href="main-app/wall-of-shame.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-2 px-4 text-sm">
+            <a href="main-app/wall-of-shame.html" class="mobile-nav-link block text-gray-300 hover:text-[#23D2EE] py-3 px-4 text-sm">
               🔥 Wall of Shame
             </a>
           </div>
@@ -393,6 +431,84 @@
     </div>
   </div>
 
+  <!-- X Social Follow Popup Modal -->
+  <div id="x-follow-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+    <div class="bg-gradient-to-br from-gray-900 via-black to-gray-900 p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-4 border border-[#23D2EE]/30 relative overflow-hidden">
+      <!-- Background glow effect -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#23D2EE]/5 via-blue-500/5 to-[#23D2EE]/5 rounded-2xl"></div>
+      
+      <div class="relative z-10">
+        <!-- Header with close button -->
+        <div class="flex justify-between items-start mb-6">
+          <div class="flex items-center space-x-3">
+            <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-8 w-auto">
+            <h2 class="text-2xl font-bold text-white">Thank You!</h2>
+          </div>
+          <button id="close-x-modal" class="text-gray-400 hover:text-white text-3xl font-light leading-none transition-colors duration-200 hover:scale-110 transform">&times;</button>
+        </div>
+
+        <!-- Main message -->
+        <div class="text-center mb-8">
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-4">
+            Thank you for reaching 
+            <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
+              TruthRise.io
+            </span>
+          </h3>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Your support means everything to us! As TruthRise is actively conducting a 
+            <span class="text-[#23D2EE] font-semibold">fundraising campaign</span>, our X page and Telegram community 
+            are carefully considered for those willing to join our mission.
+          </p>
+          <div class="bg-[#23D2EE]/10 border border-[#23D2EE]/30 rounded-lg p-4 mb-6">
+            <p class="text-white font-medium text-sm">
+              📢 Stay updated on our progress and be part of the community fighting fraud!
+            </p>
+          </div>
+        </div>
+
+        <!-- X Social icon and message -->
+        <div class="flex justify-center mb-8">
+          <div class="bg-gray-800/50 rounded-full p-4 border border-[#23D2EE]/20">
+            <svg class="w-12 h-12 text-[#23D2EE]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="space-y-4">
+          <a href="https://x.com/truthriseio" target="_blank" rel="noopener noreferrer" 
+             class="group w-full bg-[#23D2EE] text-black font-bold py-4 px-6 rounded-xl hover:scale-105 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.80l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="text-lg">Follow Now on X</span>
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+          
+          <div class="flex space-x-3">
+            <a href="https://x.com/login" target="_blank" rel="noopener noreferrer" 
+               class="flex-1 bg-gray-800 text-gray-300 font-medium py-3 px-4 rounded-lg hover:bg-gray-700 hover:text-white transition-all duration-300 text-center border border-gray-600">
+              I don't use X Social
+            </a>
+            <button id="maybe-later-x" 
+                    class="flex-1 bg-transparent text-gray-400 font-medium py-3 px-4 rounded-lg hover:text-white hover:bg-gray-800/50 transition-all duration-300 border border-gray-600 cursor-pointer">
+              Maybe Later
+            </button>
+          </div>
+        </div>
+
+        <!-- Small disclaimer -->
+        <p class="text-gray-500 text-xs text-center mt-6">
+          This popup appears once per session to keep you informed about our mission.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- Main Content - Ready for new homepage sections -->
   <main>
     <!-- Hero Section with Rotating Globe -->
@@ -409,17 +525,17 @@
         <div class="particle particle-5"></div>
       </div>
 
-      <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <div class="relative z-10 text-center max-w-5xl mx-auto px-6 py-20">
         <!-- Logo Overlay -->
-        <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="mx-auto h-24 sm:h-32 md:h-40 w-auto mb-8 animate-fade-in logo-rotate" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="mx-auto h-20 sm:h-24 md:h-32 lg:h-40 w-auto mb-12 animate-fade-in logo-rotate">
         
         <!-- TruthRise.io Title -->
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-0 tracking-tight relative z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="600">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tight relative z-10">
           <span class="text-white">TruthRise</span><span class="text-[#23D2EE]">.io</span>
         </h1>
 
         <!-- CSS Globe Container -->
-        <div class="flex justify-center mb-12 -mt-6 relative z-20" data-aos="zoom-in" data-aos-delay="350" data-aos-duration="700">
+        <div class="flex justify-center mb-16 -mt-8 relative z-20">
           <div class="globe-container">
             <div class="globe">
               <!-- Globe sphere -->
@@ -439,142 +555,286 @@
         </div>
 
         <!-- Main tagline -->
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up" data-aos-delay="500" data-aos-duration="600">
-          TRUTH Deserves a Platform
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">
+          <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
+            TRUTH Deserves a Platform
+          </span>
         </h2>
 
         <!-- Subtitle -->
-        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="650" data-aos-duration="600">
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">
           A global movement to expose fraud, protect victims, and restore justice through collective action and transparency.
         </p>
       </div>
 
       <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-up" data-aos-delay="700" data-aos-duration="400" style="animation-duration: 1.2s;">
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div class="w-6 h-10 border-2 border-[#23D2EE] rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-[#23D2EE] rounded-full mt-2 animate-pulse" style="animation-duration: 0.8s;"></div>
+          <div class="w-1 h-3 bg-[#23D2EE] rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
 
     <!-- Why Trust TruthRise Section -->
-    <section class="bg-black py-24 px-6 text-white" data-aos="fade-up" data-aos-duration="700">
-      <div class="max-w-7xl mx-auto text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">
-          <span class="bg-gradient-to-r from-white via-[#23D2EE] to-white bg-clip-text text-transparent">
+    <section class="bg-gradient-to-b from-black via-gray-950 to-black py-28 px-6 text-white relative">
+      <!-- Smooth transition overlay from hero -->
+      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/50 to-transparent"></div>
+      
+      <div class="max-w-7xl mx-auto text-center mb-20 relative z-10">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">
+          <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
             Why Trust TruthRise?
           </span>
         </h2>
-        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+        <p class="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
           A civic platform built to serve people — not platforms. Everything we do is built on ethics, participation, and verified action.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
         <!-- Card 1 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Built for Victims</h3>
-          <p class="text-gray-400 leading-relaxed">TruthRise empowers those harmed by scams — giving them tools, voice, and visibility.</p>
+          <h3 class="text-lg font-semibold text-white">Built for Victims</h3>
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Verified Investigations</h3>
-          <p class="text-gray-400 leading-relaxed">Every report is reviewed and strengthened by community insight and expert validation.</p>
+          <h3 class="text-lg font-semibold text-white">Verified Investigations</h3>
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Ethical Contributor Rewards</h3>
-          <p class="text-gray-400 leading-relaxed">We reward those who protect — not exploit. Contributions are visible and rewarded fairly.</p>
+          <h3 class="text-lg font-semibold text-white">Ethical Contributor Rewards</h3>
         </div>
 
         <!-- Card 4 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Transparent Ecosystem</h3>
-          <p class="text-gray-400 leading-relaxed">From bounties to case progress — every interaction is logged, tracked, and publicly viewable.</p>
+          <h3 class="text-lg font-semibold text-white">Transparent Ecosystem</h3>
         </div>
 
         <!-- Card 5 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="500">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Trusted by Real Experts</h3>
-          <p class="text-gray-400 leading-relaxed">Lawyers, cyber forensics, journalists — we work with professionals who believe in justice over silence.</p>
+          <h3 class="text-lg font-semibold text-white">Trusted by Real Experts</h3>
         </div>
 
         <!-- Card 6 -->
-        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="600">
-          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4">
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-6 hover:border-[#23D2EE]/50 hover:bg-gray-800/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl card-glow text-center">
+          <div class="w-12 h-12 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
             <svg class="w-6 h-6 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-white">Community-Governed</h3>
-          <p class="text-gray-400 leading-relaxed">No backroom deals. TruthRise is shaped by its users, not dictated by hidden boards or investors.</p>
+          <h3 class="text-lg font-semibold text-white">Community-Governed</h3>
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="text-center" data-aos="fade-up" data-aos-delay="700">
-        <a href="Pages/our-intentions.html" class="group inline-flex items-center px-8 py-4 bg-[#23D2EE] text-black font-bold rounded-full hover:bg-[#1bb8d1] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-          <span class="mr-2">Read Our Intentions</span>
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+      <div class="text-center relative z-10">
+        <a href="Pages/our-intentions.html" class="group inline-flex items-center px-10 py-5 bg-[#23D2EE] text-black font-bold rounded-full hover:bg-[#1bb8d1] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <span class="mr-3 text-lg">Read Our Intentions</span>
+          <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
           </svg>
         </a>
       </div>
+      
+      <!-- Smooth transition to next section -->
+      <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-gray-900/50"></div>
+    </section>
+
+    <!-- Anonymous Tip Section -->
+    <section class="bg-gradient-to-br from-gray-900 via-black to-gray-900 py-28 px-6 text-white relative overflow-hidden">
+      <!-- Smooth transition overlay from previous section -->
+      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
+      
+      <!-- Background pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-10 left-10 w-20 h-20 border border-[#23D2EE] rounded-full"></div>
+        <div class="absolute top-32 right-20 w-16 h-16 border border-[#23D2EE] rounded-full"></div>
+        <div class="absolute bottom-20 left-32 w-12 h-12 border border-[#23D2EE] rounded-full"></div>
+        <div class="absolute bottom-40 right-10 w-24 h-24 border border-[#23D2EE] rounded-full"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto text-center relative z-10">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-6 py-3 bg-red-500/10 border border-red-500/30 rounded-full mb-10">
+          <span class="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+          <span class="text-red-400 text-sm font-medium tracking-wider">ANONYMOUS REPORTING</span>
+        </div>
+
+        <!-- Main heading -->
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">
+          <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">Have You Seen</span>
+          <br>
+          <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
+            Something Suspicious?
+          </span>
+        </h2>
+
+        <!-- Subheading -->
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-10 max-w-5xl mx-auto leading-relaxed">
+          Don't stay silent. Your tip could protect countless others from falling victim to scams and fraud.
+        </p>
+
+        <!-- Key points -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
+          <div class="bg-gray-800/30 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-8 hover:border-[#23D2EE]/40 transition-all duration-300 card-glow">
+            <div class="w-14 h-14 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+              <svg class="w-7 h-7 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">100% Anonymous</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">No account required. No personal information collected. Complete anonymity guaranteed.</p>
+          </div>
+
+          <div class="bg-gray-800/30 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-8 hover:border-[#23D2EE]/40 transition-all duration-300 card-glow">
+            <div class="w-14 h-14 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+              <svg class="w-7 h-7 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Quick & Easy</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Submit in seconds. Every tip helps build our database of known scammers and fraudsters.</p>
+          </div>
+
+          <div class="bg-gray-800/30 backdrop-blur-sm border border-[#23D2EE]/20 rounded-xl p-8 hover:border-[#23D2EE]/40 transition-all duration-300 card-glow">
+            <div class="w-14 h-14 bg-[#23D2EE]/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+              <svg class="w-7 h-7 text-[#23D2EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 text-white">Secure & Protected</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Your identity is protected while helping others avoid the same scams you've encountered.</p>
+          </div>
+        </div>
+
+        <!-- Examples of what to report -->
+        <div class="bg-gray-800/20 border border-[#23D2EE]/30 rounded-2xl p-10 mb-16 max-w-5xl mx-auto">
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-8">What Should You Report?</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Suspicious websites or fake online stores</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Romance scammers on dating platforms</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Investment fraud and crypto scams</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Fake tech support calls or emails</span>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Social media impersonation accounts</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Phishing emails or text messages</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Pyramid schemes and MLM fraud</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 bg-[#23D2EE] rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-gray-300">Any suspicious online activity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="space-y-8">
+          <p class="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <span class="text-white font-semibold">Your silence protects scammers.</span> 
+            Your voice protects victims. Help us build the world's most comprehensive fraud database.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="components/anonymus-tip.html" class="group relative inline-flex items-center px-10 py-5 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <span class="relative z-10 flex items-center gap-3">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-lg">Send Anonymous Tip</span>
+              </span>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            </a>
+            
+            <span class="text-gray-400 text-sm">
+              Or learn more about our <a href="Pages/our-intentions.html" class="text-[#23D2EE] hover:underline font-medium">mission and values</a>
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Smooth transition to next section -->
+      <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-black/50"></div>
     </section>
 
     <!-- Video Section: AI Scammers vs. TruthRise -->
-    <section class="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden" data-aos="fade-up" data-aos-duration="700">
-      <div class="container mx-auto px-4 text-center relative z-10">
+    <section class="relative py-28 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+      <!-- Smooth transition overlay from previous section -->
+      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/50 to-transparent"></div>
+      
+      <div class="container mx-auto px-6 text-center relative z-10">
         <!-- Badge -->
-        <div class="inline-flex items-center px-4 py-2 bg-[#23D2EE]/10 border border-[#23D2EE]/30 rounded-full mb-8" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
-          <span class="w-2 h-2 bg-[#23D2EE] rounded-full mr-2 animate-pulse"></span>
-          <span class="text-[#23D2EE] text-sm font-medium">LIVE CASE STUDY</span>
+        <div class="inline-flex items-center px-6 py-3 bg-[#23D2EE]/10 border border-[#23D2EE]/30 rounded-full mb-12">
+          <span class="w-2 h-2 bg-[#23D2EE] rounded-full mr-3 animate-pulse"></span>
+          <span class="text-[#23D2EE] text-sm font-medium tracking-wider">LIVE CASE STUDY</span>
         </div>
 
         <!-- Enhanced title with gradient -->
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight" data-aos="fade-up" data-aos-delay="150" data-aos-duration="600">
-          <span class="bg-gradient-to-r from-white via-[#23D2EE] to-white bg-clip-text text-transparent">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">
+          <span class="bg-gradient-to-r from-[#23D2EE] via-blue-400 to-[#23D2EE] bg-clip-text text-transparent">
             AI Scammers vs. TruthRise
           </span>
           <br>
-          <span class="text-3xl md:text-4xl text-gray-300 font-medium">& Breadcrumbs.app</span>
+          <span class="text-2xl md:text-3xl lg:text-4xl text-gray-300 font-medium">& Breadcrumbs.app</span>
         </h2>
         
-        <p class="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-20 max-w-5xl mx-auto leading-relaxed">
           Watch how our platform and <span class="text-[#23D2EE] font-semibold">Breadcrumbs.app</span> analytics 
           exposed a sophisticated AI scammer. <span class="text-white font-medium">Truth always rises.</span>
         </p>
 
         <!-- Enhanced video container -->
-        <div class="relative max-w-5xl mx-auto mb-12" data-aos="zoom-in" data-aos-delay="450" data-aos-duration="700">
+        <div class="relative max-w-6xl mx-auto mb-16">
           <div class="video-container relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-[#23D2EE]/20">
             <!-- Video element -->
             <video 
@@ -589,8 +849,8 @@
             
             <!-- Custom video overlay -->
             <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 pointer-events-none">
-              <button class="play-pause-btn group flex items-center justify-center w-20 h-20 bg-[#23D2EE] rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 pointer-events-auto" aria-label="Play or Pause Video">
-                <svg class="w-8 h-8 text-black group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+              <button class="play-pause-btn group flex items-center justify-center w-24 h-24 bg-[#23D2EE] rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 pointer-events-auto" aria-label="Play or Pause Video">
+                <svg class="w-10 h-10 text-black group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                   <path class="play-icon" d="M8 5v14l11-7z"/>
                   <path class="pause-icon hidden" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                 </svg>
@@ -609,22 +869,22 @@
           </div>
 
           <!-- Video stats -->
-          <div class="flex justify-center items-center gap-8 mt-6 text-sm text-gray-400" data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex justify-center items-center gap-12 mt-8 text-sm text-gray-400">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
               </svg>
               <span>12.5K views</span>
             </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
               </svg>
               <span>8:45 duration</span>
             </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#23D2EE]" fill="currentColor" viewBox="0 0 20 20">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-[#23D2EE]" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
               </svg>
               <span>98% success rate</span>
@@ -633,52 +893,96 @@
         </div>
 
         <!-- Enhanced CTA buttons -->
-        <div class="flex justify-center items-center" data-aos="fade-up" data-aos-delay="750" data-aos-duration="500">
-          <a href="truthrise-onboarding/src/constitution.html" class="group relative inline-flex items-center px-8 py-4 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
-            <span class="relative z-10 flex items-center gap-2">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex justify-center items-center">
+          <a href="truthrise-onboarding/src/constitution.html" class="group relative inline-flex items-center px-10 py-5 bg-[#23D2EE] text-black font-bold rounded-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <span class="relative z-10 flex items-center gap-3">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
               </svg>
-              Join the Fight
+              <span class="text-lg">Join the Fight</span>
             </span>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </a>
         </div>
       </div>
+      
+      <!-- Smooth transition to footer -->
+      <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-black"></div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-black text-white py-12">
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="text-lg font-bold mb-4">TruthRise</h3>
-        <p class="text-gray-300">A civic platform empowering individuals to fight scams and fraud through collective action.</p>
+  <footer class="bg-gradient-to-b from-black via-gray-950 to-black text-white py-16 relative">
+    <!-- Smooth transition overlay from previous section -->
+    <div class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-black to-transparent"></div>
+    
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 relative z-10">
+      <div class="md:col-span-1 lg:col-span-1">
+        <div class="flex items-center space-x-3 mb-6">
+          <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-10 w-auto">
+          <h3 class="text-xl font-bold text-[#23D2EE]">TruthRise</h3>
+        </div>
+        <p class="text-gray-300 leading-relaxed">A civic platform empowering individuals to fight scams and fraud through collective action and transparency.</p>
       </div>
       <div>
-        <h3 class="text-lg font-bold mb-4">Platform</h3>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">How It Works</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Success Stories</a>
-        <a href="main-app/wall-of-shame.html" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Wall of Shame</a>
-        <a href="main-app/truth-bank.html" class="block text-gray-300 hover:text-[#23D2EE] mb-2">TRUTH Bank</a>
+        <h3 class="text-lg font-bold mb-6 text-white">Platform</h3>
+        <div class="space-y-3">
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">How It Works</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Success Stories</a>
+          <a href="main-app/wall-of-shame.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Wall of Shame</a>
+          <a href="main-app/truth-bank.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">TRUTH Bank</a>
+        </div>
       </div>
       <div>
-        <h3 class="text-lg font-bold mb-4">Company</h3>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">About Us</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Careers</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Press</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Contact</a>
+        <h3 class="text-lg font-bold mb-6 text-white">Company</h3>
+        <div class="space-y-3">
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">About Us</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Careers</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Press</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Contact</a>
+        </div>
       </div>
       <div>
-        <h3 class="text-lg font-bold mb-4">Legal</h3>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Terms of Service</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Privacy Policy</a>
-        <a href="truthrise-onboarding/src/constitution.html" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Constitution</a>
-        <a href="#" class="block text-gray-300 hover:text-[#23D2EE] mb-2">Guidelines</a>
+        <h3 class="text-lg font-bold mb-6 text-white">Legal</h3>
+        <div class="space-y-3">
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Terms of Service</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Privacy Policy</a>
+          <a href="truthrise-onboarding/src/constitution.html" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Constitution</a>
+          <a href="#" class="block text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">Guidelines</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white">Follow Us</h3>
+        <div class="space-y-3">
+          <a href="https://x.com/truthriseio" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            X (Twitter)
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.174.372.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+            Discord
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a2.999 2.999 0 0 0-2.114-2.114C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.384.527A2.999 2.999 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.999 2.999 0 0 0 2.114 2.114c1.879.527 9.384.527 9.384.527s7.505 0 9.384-.527a2.999 2.999 0 0 0 2.114-2.114C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            YouTube
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-[#23D2EE] transition-colors duration-200">
+            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
-    <div class="text-center mt-8 pt-8 border-t border-gray-700">
-      <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-10 sm:h-12 w-auto mx-auto mb-3" data-aos="fade-up" data-aos-delay="100" data-aos-duration="400">
+    <div class="text-center mt-12 pt-8 border-t border-gray-700 relative z-10">
+      <img src="assets/truthrise-logo-white.png" alt="TruthRise.io Logo" class="h-12 w-auto mx-auto mb-4">
       <p class="text-gray-300">© 2025 TruthRise. All rights reserved.</p>
     </div>
   </footer>
@@ -713,7 +1017,7 @@
           if (menu.classList.contains('active')) {
             menuOpenPath.classList.add('hidden');
             menuClosePath.classList.remove('hidden');
-          } else {
+                   } else {
             menuOpenPath.classList.remove('hidden');
             menuClosePath.classList.add('hidden');
           }
@@ -964,6 +1268,114 @@
           pauseIcon: !!pauseIcon
         });
       }
+    });
+
+    // X Social Follow Popup functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const xFollowModal = document.getElementById('x-follow-modal');
+      const closeXModal = document.getElementById('close-x-modal');
+      const maybeLaterBtn = document.getElementById('maybe-later-x');
+      
+      console.log('X Popup elements found:', {
+        modal: !!xFollowModal,
+        closeBtn: !!closeXModal,
+        maybeLaterBtn: !!maybeLaterBtn
+      });
+      
+      // TEMPORARY: Clear any existing session data for testing
+      // Remove this line after confirming popup works
+      sessionStorage.removeItem('xPopupShown');
+      
+      // Check if popup has been shown this session
+      const hasShownXPopup = sessionStorage.getItem('xPopupShown');
+      console.log('Has shown X popup this session:', hasShownXPopup);
+      
+      if (!hasShownXPopup && xFollowModal) {
+        console.log('Scheduling popup to show in 8 seconds...');
+        // Show popup after a delay
+        setTimeout(() => {
+          console.log('8 seconds elapsed, showing X popup now...');
+          document.getElementById('x-follow-modal').classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          console.log('Popup should now be visible');
+        }, 8000); // Show after 8 seconds
+      } else {
+        console.log('X popup already shown this session or modal not found');
+      }
+      
+      // Close modal function
+      function closeXFollowModal() {
+        console.log('Closing X popup...');
+        if (xFollowModal) {
+          xFollowModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+          // Mark as shown for this session
+          sessionStorage.setItem('xPopupShown', 'true');
+          console.log('X popup closed and marked as shown');
+        }
+      }
+      
+      // Close button event
+      if (closeXModal) {
+        closeXModal.addEventListener('click', function(e) {
+          console.log('Close X button clicked');
+          e.preventDefault();
+          e.stopPropagation();
+          closeXFollowModal();
+        });
+      }
+      
+      // Maybe later button event
+      if (maybeLaterBtn) {
+        maybeLaterBtn.addEventListener('click', function(e) {
+          console.log('Maybe Later button clicked');
+          e.preventDefault();
+          e.stopPropagation();
+          closeXFollowModal();
+        });
+      }
+      
+      // Close when clicking outside the modal (on the backdrop)
+      if (xFollowModal) {
+        xFollowModal.addEventListener('click', function(e) {
+          // Only close if clicking on the backdrop (the modal itself, not its children)
+          if (e.target === xFollowModal) {
+            console.log('Clicked outside modal, closing...');
+            closeXFollowModal();
+          }
+        });
+      }
+      
+      // Close on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && xFollowModal && !xFollowModal.classList.contains('hidden')) {
+          console.log('Escape key pressed, closing X popup...');
+          closeXFollowModal();
+        }
+      });
+      
+      // Track when user follows on X (optional analytics)
+      const followBtn = xFollowModal?.querySelector('a[href*="x.com/truthriseio"]');
+      if (followBtn) {
+        followBtn.addEventListener('click', function() {
+          console.log('User clicked Follow on X');
+          closeXFollowModal();
+        });
+      }
+      
+      // Debug function to manually show popup (for testing)
+      window.showXPopup = function() {
+        sessionStorage.removeItem('xPopupShown');
+        if (xFollowModal) {
+          xFollowModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+      
+      // Debug function to manually close popup (for testing)
+      window.closeXPopup = function() {
+        closeXFollowModal();
+      };
     });
   </script>
 </body>
