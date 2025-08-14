@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TruthRise Pitch Deck 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Feather Icons CDN -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Open Sans', Arial, sans-serif;
+      background: linear-gradient(135deg, #003366 0%, #00BFFF 100%);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .deck-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px 48px 24px;
+    }
+    .slide {
+      background: rgba(0, 51, 102, 0.97);
+      border-radius: 28px;
+      box-shadow: 0 6px 40px rgba(0,191,255,0.10);
+      margin-bottom: 56px;
+      padding: 56px 40px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1, h2 {
+      font-weight: 900;
+      margin-bottom: 24px;
+      color: #fff;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    h1 { font-size: 2.7rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.25rem; color: #00BFFF; margin-bottom: 16px; text-align: center; }
+    p, li, td, th {
+      font-size: 1rem;
+      color: #D3D3D3;
+      line-height: 1.6;
+    }
+    .accent { color: #00BFFF; }
+    .gray { color: #D3D3D3; }
+    .icon { vertical-align: middle; margin-right: 8px; color: #00BFFF; }
+    .icon.red { color: #e53e3e; }
+    .icon.warm-orange { color: #FF8800; }
+    .icon.green { color: #00BFFF; }
+  .slide .split { display: flex; gap: 48px; align-items: center; justify-content: center; width: 100%; }
+  .slide .split > div { flex: 1; min-width: 0; }
+    .slide .infographic { background: #fff; border-radius: 16px; padding: 24px; color: #003366; text-align: center; }
+  .slide .network { display: flex; justify-content: center; gap: 48px; margin: 40px 0; }
+  .slide .node { background: #00BFFF; color: #003366; border-radius: 50%; width: 110px; height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 2px 16px rgba(0,191,255,0.14); font-size: 1.1rem; }
+    .slide .network-lines { position: absolute; left: 50%; top: 60%; width: 300px; height: 2px; background: #00BFFF; opacity: 0.3; transform: translateX(-50%); }
+  .slide .columns { display: flex; gap: 48px; align-items: flex-start; justify-content: center; width: 100%; }
+  .slide .column { flex: 1; padding: 28px; border-radius: 16px; min-width: 0; box-shadow: 0 2px 16px rgba(0,191,255,0.14); }
+  .slide .column.left { background: #003366; color: #fff; border: 2px solid #00BFFF; }
+  .slide .column.right { background: #fff; color: #003366; border: 2px solid #00BFFF; }
+  .slide .timeline { display: flex; gap: 32px; justify-content: center; margin: 40px 0; }
+  .slide .step { background: #00BFFF; color: #003366; border-radius: 14px; padding: 20px 32px; font-weight: 700; box-shadow: 0 2px 14px rgba(0,191,255,0.14); position: relative; font-size: 1.1rem; }
+    .slide .step:not(:last-child)::after {
+      content: '\\2192';
+      position: absolute;
+      right: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00BFFF;
+      font-size: 2rem;
+    }
+    .slide .table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .slide .table th, .slide .table td { padding: 12px 16px; border-bottom: 1px solid #D3D3D3; }
+    .slide .table th { background: #003366; color: #00BFFF; }
+  .slide .pillars { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 32px; margin: 40px 0; }
+  .slide .pillar { background: #223B54; border: 2px solid #00BFFF; border-radius: 18px; padding: 32px; text-align: center; font-weight: 700; color: #fff; font-size: 1.1rem; }
+  .slide .avatars { display: flex; gap: 48px; justify-content: center; margin: 40px 0; }
+  .slide .avatar { text-align: center; }
+  .slide .avatar-icon { font-size: 3.2rem; margin-bottom: 12px; }
+  .slide .bar-chart { width: 100%; height: 140px; background: linear-gradient(90deg, #003366 0%, #00BFFF 100%); border-radius: 14px; margin: 32px 0; position: relative; }
+  .slide .bar { position: absolute; bottom: 0; left: 10%; width: 80%; height: 20%; background: #00BFFF; border-radius: 10px; }
+  .slide .scroll-bg { background: #D3D3D3; border-radius: 28px; padding: 40px; color: #003366; margin-bottom: 16px; }
+  .slide .roadmap { display: flex; gap: 32px; align-items: center; margin: 40px 0; flex-wrap: wrap; justify-content: center; }
+  .slide .milestone { background: #223B54; color: #fff; border-radius: 14px; padding: 20px 32px; font-weight: 700; display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+    .slide .milestone.completed { border-left: 6px solid #00BFFF; }
+    .slide .milestone.inprogress { border-left: 6px solid orange; }
+    .slide .milestone.future { border-left: 6px solid #FFD700; }
+  .slide .cta { text-align: center; margin: 40px 0; }
+  .slide .cta-btn { background: #00BFFF; color: #003366; font-weight: 700; font-size: 1.2rem; border: none; border-radius: 10px; padding: 20px 40px; cursor: pointer; box-shadow: 0 2px 14px rgba(0,191,255,0.14); transition: box-shadow 0.2s; margin: 0 8px 16px 8px; }
+  .slide .cta-btn:hover { box-shadow: 0 0 32px #00BFFF; }
+    @media (max-width: 700px) {
+      .deck-container { padding: 8px; }
+      .slide { padding: 16px 4px; margin-bottom: 32px; }
+      .slide .split, .slide .network, .slide .columns, .slide .timeline, .slide .roadmap, .slide .avatars { flex-direction: column, gap: 24px, align-items: center; }
+      .slide .pillars { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); gap: 24px; }
+      .slide .bar-chart { height: 80px; }
+      .slide .scroll-bg { padding: 16px; }
+      h1, h2 { font-size: 2rem; }
+      .slide .node { width: 80px; height: 80px; font-size: 1rem; }
+      .slide .milestone { padding: 12px 16px; font-size: 1rem; }
+      .slide .cta-btn { padding: 12px 20px; font-size: 1rem; }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Slide 1: The Problem -->
+    <section class="slide">
+      <h1>Online Fraud: A Growing Crisis in Europe</h1>
+      <div class="split">
+        <div style="width:100%;">
+          <ul style="font-size:1.2rem;">
+            <li><span class="icon warm-orange" data-feather="alert-triangle"></span>Online scams amount to over <b>$50B</b> yearly and growing</li>
+            <li><span class="icon warm-orange" data-feather="search"></span>Investigations performed on less than <b>10%</b> of cases</li>
+            <li><span class="icon warm-orange" data-feather="trending-down"></span>Recovery success falls below <b>5%</b></li>
+            <li><span class="icon warm-orange" data-feather="user-x"></span>Victims are often elderly, vulnerable, or digitally uninformed</li>
+            <li><span class="icon warm-orange" data-feather="file-text"></span>No standardized bridge between victims and institutions</li>
+          </ul>
+        </div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+              <img src="assets/eu-map.png" alt="EU Map" style="width:220px;opacity:1;z-index:2;display:block;max-width:100%;margin-bottom:18px;">
+            <div class="gray" style="font-size:1.1rem;">Victims deserve better.</div>
+            <div class="accent" style="font-size:1.35rem;font-weight:700;margin-top:8px;">TRUTH deserves a platform</div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: The TruthRise Vision -->
+    <section class="slide">
+      <h1 class="accent" style="text-align:center;">A Civic Infrastructure for Digital Justice</h1>
+      <p style="text-align:center;">TruthRise empowers victims to organize, submit structured reports, and access investigative, legal, and technological resources through a safe, transparent environment.</p>
+      <div class="network">
+        <div class="node">Victims</div>
+        <div class="node">Contributors</div>
+        <div class="node">Institutions</div>
+        <div class="node">Frameworks</div>
+      </div>
+      <div class="network-lines"></div>
+      <div class="gray" style="text-align:center;">Connected by civic participation, ethics, and radical transparency.</div>
+    </section>
+
+    <!-- Slide 3: Market Failure -->
+    <section class="slide">
+      <h2>Market Failure</h2>
+      <div class="columns">
+        <div class="column left">
+          <h3><span class="icon red" data-feather="x"></span>Failures</h3>
+          <ul>
+            <li>Hotlines don’t scale</li>
+            <li>Manual systems overwhelm law enforcement</li>
+            <li>No fraud intelligence tools</li>
+            <li>No victim-centric design</li>
+            <li>Bureaucracy favors institutions</li>
+            <li>No clear path from fraud to justice</li>
+            <li>Victims feel helpless, shamed, invisible</li>
+          </ul>
+        </div>
+        <div class="column right">
+          <h3><span class="icon green" data-feather="check"></span>TruthRise</h3>
+          <ul>
+            <li>Structured onboarding</li>
+            <li>Evidence validation</li>
+            <li>Escalation with transparency</li>
+            <li>Contributor incentives</li>
+            <li>Institutional reporting pipelines</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: The TruthRise Approach -->
+
+      <section class="slide approach-slide">
+        <h2 class="slide-title">The TruthRise Approach</h2>
+        <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;gap:2.2rem;margin-bottom:2.2rem;flex-wrap:wrap;">
+          <div class="approach-step">
+            <span class="approach-icon" data-feather="user"></span>
+            <span class="approach-label">Onboard</span>
+          </div>
+          <span class="approach-arrow">&#8594;</span>
+          <div class="approach-step">
+            <span class="approach-icon" data-feather="edit"></span>
+            <span class="approach-label">Report</span>
+          </div>
+          <span class="approach-arrow">&#8594;</span>
+          <div class="approach-step">
+            <span class="approach-icon" data-feather="users"></span>
+            <span class="approach-label">Validate</span>
+          </div>
+          <span class="approach-arrow">&#8594;</span>
+          <div class="approach-step">
+            <span class="approach-icon" data-feather="arrow-up-right"></span>
+            <span class="approach-label">Escalate</span>
+          </div>
+          <span class="approach-arrow">&#8594;</span>
+          <div class="approach-step">
+            <span class="approach-icon" data-feather="check-circle"></span>
+            <span class="approach-label">Resolve</span>
+          </div>
+        </div>
+        <ul class="approach-list">
+          <li>Victims onboard safely and anonymously</li>
+          <li>Step-by-step fraud report generation</li>
+          <li>Crowdsourced validation & contributor engagement</li>
+          <li>Smart escalation to authorities or licensed partners</li>
+          <li>Live ecosystem stats (fraud maps, solvability scores, reputation layers)</li>
+          <li>Every action is logged. Every proof is preserved. Every participant is accountable.</li>
+        </ul>
+      </section>
+
+    <!-- Slide 5: EU 2030 Agenda Alignment -->
+    <section class="slide">
+      <h2><span data-feather="flag"></span> EU Digital Decade 2030 Alignment</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>EU Priority</th>
+            <th>TruthRise Contribution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Digital Skills</td>
+            <td>User-friendly onboarding, education, and simplified tools for all users</td>
+          </tr>
+          <tr>
+            <td>Digital Infrastructures</td>
+            <td>Secure, scalable platform with community-powered intelligence mapping</td>
+          </tr>
+          <tr>
+            <td>Digitalization of Businesses</td>
+            <td>Analytics and forensic tools for compliance teams and recovery services</td>
+          </tr>
+          <tr>
+            <td>Digital Public Services</td>
+            <td>Structured case intake pipelines and forensic data formatting for institutions</td>
+          </tr>
+          <tr>
+            <td>Consumer Protection</td>
+            <td>Safe environment for vulnerable citizens to report and act</td>
+          </tr>
+          <tr>
+            <td>Cybersecurity</td>
+            <td>Early warning systems and auditable ecosystem flows</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Slide 6: Business & Licensing Model -->
+    <section class="slide">
+      <h2>Business & Licensing Model</h2>
+      <div class="pillars">
+        <div class="pillar"><span data-feather="briefcase"></span>Institutional Licensing</div>
+        <div class="pillar"><span data-feather="users"></span>Case Sponsorships</div>
+        <div class="pillar"><span data-feather="bar-chart-2"></span>Premium Services</div>
+        <div class="pillar"><span data-feather="dollar-sign"></span>Fiat-to-credit ($TRUTH)</div>
+      </div>
+      <div class="accent" style="text-align:center;font-size:1.2rem;">Civic infrastructure, not profit-driven.<br>Long-term: EU-recognized digital utility provider.</div>
+    </section>
+
+    <!-- Slide 7: Social & Economic Impact -->
+
+      <section class="slide" style="background:#003366;">
+        <h2 style="color:#fff;font-size:2rem;font-weight:900;margin-bottom:18px;letter-spacing:1px;text-align:center;">Social & Economic Impact</h2>
+        <div style="background:#00BFFF;color:#003366;border-radius:18px;padding:20px 32px;font-size:1.15rem;font-weight:600;box-shadow:0 2px 18px rgba(0,191,255,0.18);margin-bottom:28px;max-width:600px;text-align:center;">
+          TruthRise helps more people recover from scams and builds trust in the community.
+        </div>
+        <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;gap:40px;margin-bottom:32px;flex-wrap:wrap;">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <span class="avatar-icon" data-feather="heart" style="font-size:3.5rem;color:#00BFFF;margin-bottom:10px;"></span>
+            <div style="font-weight:700;font-size:1.15rem;color:#fff;">Victim</div>
+            <div class="gray" style="font-size:1rem;">Recovery & dignity</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <span class="avatar-icon" data-feather="award" style="font-size:3.5rem;color:#00BFFF;margin-bottom:10px;"></span>
+            <div style="font-weight:700;font-size:1.15rem;color:#fff;">Contributor</div>
+            <div class="gray" style="font-size:1rem;">Ethical rewards</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <span class="avatar-icon" data-feather="shield" style="font-size:3.5rem;color:#00BFFF;margin-bottom:10px;"></span>
+            <div style="font-weight:700;font-size:1.15rem;color:#fff;">Institution</div>
+            <div class="gray" style="font-size:1rem;">Actionable intelligence</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:32px;">
+          <div style="background:#fff;color:#003366;border-radius:16px;padding:24px 36px;font-size:1.35rem;font-weight:900;box-shadow:0 2px 18px rgba(0,191,255,0.18);margin-bottom:10px;text-align:center;">
+            <span style="color:#00BFFF;">Recovery rate:</span> <span style="font-weight:900;">4%</span> <span style="color:#003366;font-weight:700;">→</span> <span style="color:#00BFFF;font-weight:900;">20%</span> <span style="font-size:1rem;font-weight:600;">by 2027</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-bottom:8px;">
+          <div style="background:#00BFFF;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1.08rem;font-weight:600;text-align:center;">
+            Scams exposed, mapped, and publicly documented
+          </div>
+          <div style="background:#00BFFF;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1.08rem;font-weight:600;text-align:center;">
+            Community-powered oversight creates new trust
+          </div>
+        </div>
+      </section>
+
+    <!-- Slide 8: Platform Governance -->
+    <section class="slide governance-slide" style="background:#003366;">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:700px;margin:0 auto;">
+        <span class="icon" data-feather="shield" style="font-size:4.5rem;color:#00BFFF;margin-bottom:18px;"></span>
+        <h2 style="color:#fff;font-size:2rem;font-weight:900;margin-bottom:18px;letter-spacing:1px;text-align:center;">Platform Governance</h2>
+        <div style="background:#00BFFF;color:#003366;border-radius:18px;padding:24px 32px;font-size:1.15rem;font-weight:600;box-shadow:0 2px 18px rgba(0,191,255,0.18);margin-bottom:24px;max-width:600px;text-align:center;">
+          <b>What does governance mean?</b><br>
+          Governance is how a group of people make rules, keep things fair, and make sure everyone does the right thing. It helps everyone work together, solve problems, and make good choices for the whole community.
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-bottom:24px;">
+          <div style="background:#fff;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1rem;font-weight:500;text-align:left;">
+            <b>Ethical Charter</b><br>Signed during onboarding
+          </div>
+          <div style="background:#fff;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1rem;font-weight:500;text-align:left;">
+            <b>Multi-role Ecosystem</b><br>Victims, contributors, verifiers, auditors
+          </div>
+          <div style="background:#fff;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1rem;font-weight:500;text-align:left;">
+            <b>Anti-exploitation Rules</b><br>Enforced by smart tools and community oversight
+          </div>
+          <div style="background:#fff;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1rem;font-weight:500;text-align:left;">
+            <b>Reputation-based Access</b><br>For higher responsibilities
+          </div>
+          <div style="background:#fff;color:#003366;border-radius:14px;padding:18px 22px;min-width:220px;box-shadow:0 2px 12px rgba(0,191,255,0.10);font-size:1rem;font-weight:500;text-align:left;">
+            <b>Admin Accountability</b><br>To contributors and data integrity audits
+          </div>
+        </div>
+        <div style="background:#00BFFF;color:#003366;border-radius:14px;padding:20px 28px;font-size:1.25rem;font-weight:700;box-shadow:0 2px 16px rgba(0,191,255,0.14);max-width:520px;text-align:center;">
+          Governed by the people, for the people.
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: Roadmap & Milestones -->
+    <section class="slide">
+      <h2>Roadmap & Milestones</h2>
+        <div class="roadmap-timeline">
+          <div class="roadmap-item">
+            <span class="roadmap-date">🔹 Q4 2025 — MVP Launch</span>
+            <ul class="roadmap-list">
+              <li>Case Submission Flow (structured)</li>
+              <li>Victim onboarding module</li>
+              <li>Core role-based UI (contributors, validators, public)</li>
+              <li>Integrated ethical code of conduct</li>
+            </ul>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-date">🔹 Q1–Q2 2026</span>
+            <ul class="roadmap-list">
+              <li>Verified contributor system & badge logic</li>
+              <li>First paid modules for OSINT & case structuring</li>
+              <li>Begin onboarding B2B pilot clients for institutional fraud insights</li>
+            </ul>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-date">🔹 Q3–Q4 2026</span>
+            <ul class="roadmap-list">
+              <li>Full Pro subscription rollout</li>
+              <li>Launch of Sponsorship Marketplace</li>
+              <li>Start Enterprise Licensing deals (Regulators, NGOs, Law Firms)</li>
+            </ul>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-date">🔹 2027</span>
+            <ul class="roadmap-list">
+              <li>Cross-border legal coordination tools</li>
+              <li>EU-aligned report format generation engine</li>
+              <li>Embedded solvability index for scam scoring</li>
+              <li>Civic reputation system fully active ($TRUTH metrics)</li>
+            </ul>
+          </div>
+          <div class="roadmap-item">
+            <span class="roadmap-date">🔹 2028</span>
+            <ul class="roadmap-list">
+              <li>Civic Court Integration (for internal peer validation)</li>
+              <li>Institutional Licensing Framework (open for gov/regulator pilot)</li>
+              <li>Launch Europe-wide "Protect & Inform" campaign</li>
+            </ul>
+          </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Call for Collaboration -->
+    <section class="slide">
+      <div class="cta">
+        <h1 class="accent">Join TruthRise: Build Digital Justice for Europe.</h1>
+        <div style="margin:24px 0;">
+          <button class="cta-btn">Regulators</button>
+          <button class="cta-btn">Law Firms</button>
+          <button class="cta-btn">Grants & Institutions</button>
+          <button class="cta-btn">Policy Makers</button>
+        </div>
+        <div style="margin-top:24px;font-size:1.2rem;font-weight:700;">Request a Briefing: <a href="mailto:info@truthrise.io" style="color:#00BFFF;">info@truthrise.io</a></div>
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Europe_map_cyan.png" alt="EU Map" style="width:120px;opacity:0.15;position:absolute;bottom:24px;right:24px;">
+    </section>
+
+  </div>
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>
